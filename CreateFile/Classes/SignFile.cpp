@@ -10,7 +10,6 @@
 #include <vector>
 #include <CPROCSP/CPROCSP.h>
 #include <CPROPKI/cades.h>
-#include <CPROPKI/pkiLicense.h>
 #include "SignFile.h"
 
 extern bool USE_CACHE_DIR;
@@ -54,7 +53,7 @@ CSP_BOOL get_certs(PCCERT_CONTEXT** certs, size_t* count)
     }
     
     free(pProvInfo);
-    *certs = (PCCERT_CONTEXT*) malloc(sizeof(certs_vector[0])* *count);
+    *certs = (PCCERT_CONTEXT*) malloc(sizeof(certs_vector[0])* certs_vector.size());
     if (!certs) {
         goto close_cert_store;
     }
@@ -93,21 +92,6 @@ static const char* GetHashOid(const PCCERT_CONTEXT pCert) {
     return NULL;
 }
 
-static void setLicense() {
-    
-    if (isLicenseSet) {
-        return;
-    }
-    
-    if (setPkiLicense(L"0A202-U0030-00ECW-RRLMF-UU2WK")) {
-        cout << "Error setting OCSP License" << endl;
-    }
-    if (setPkiLicense(L"TA200-G0030-00ECW-RRLNE-BTDVV")) {
-        cout << "Error setting TSP License" << endl;
-    }
-    isLicenseSet = true;
-}
-
 const wchar_t *GetWC(const char *c)
 {
     const size_t cSize = strlen(c)+1;
@@ -137,8 +121,6 @@ CSP_BOOL do_low_sign(const uint8_t* msg, size_t msg_size, const PCCERT_CONTEXT c
     
     std::vector<PCCERT_CONTEXT> certs;
     *signature = 0;
-    
-    setLicense();
     
     // Если сертификат не найден, завершаем работу
     if (!context) {
