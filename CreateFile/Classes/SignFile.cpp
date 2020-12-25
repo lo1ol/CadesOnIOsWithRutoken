@@ -32,7 +32,7 @@ CSP_BOOL get_certs(PCCERT_CONTEXT** certs, size_t* count)
     if(!hCertStore){
         ret = CSP_GetLastError();
         fprintf (stderr, "CertOpenSystemStore failed.");
-        return ret;
+        goto exit;
     }
     
 
@@ -54,18 +54,25 @@ CSP_BOOL get_certs(PCCERT_CONTEXT** certs, size_t* count)
     }
     
     free(pProvInfo);
-    *count=certs_vector.size();
     *certs = (PCCERT_CONTEXT*) malloc(sizeof(certs_vector[0])* *count);
+    if (!certs) {
+        goto close_cert_store;
+    }
     memcpy(*certs, certs_vector.data(), sizeof(certs_vector[0])*certs_vector.size());
+    *count=certs_vector.size();
     
-    
+    ret = 1;
+close_cert_store:
     // Закрываем хранилище
     if (!CertCloseStore(hCertStore, 0)) {
+        free(*certs);
+        *certs = nullptr;
         cout << "Certificate store handle was not closed." << endl;
         return 0;
     }
     
-    return 1;
+exit:
+    return ret;
 }
 
 // Функция получения OID алгоритма хеширования по сертификату

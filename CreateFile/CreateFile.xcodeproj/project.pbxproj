@@ -44,15 +44,15 @@
 		2A5B588D1C296C63004E6FDA /* root.sto in Resources */ = {isa = PBXBuildFile; fileRef = 2A5B588C1C296C63004E6FDA /* root.sto */; };
 		2A6C49F41A4D68CB00A5D42B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6C49F31A4D68CB00A5D42B /* Images.xcassets */; };
 		2A84C3161A35E9E700649856 /* EnumReaders.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A84C3151A35E9E700649856 /* EnumReaders.mm */; };
-		3097B892259351CA0090DC62 /* CPROPKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097B891259351CA0090DC62 /* CPROPKI.framework */; };
-		3097B8952593520D0090DC62 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097B8942593520D0090DC62 /* libxml2.2.tbd */; };
-		3097B89C259356DD0090DC62 /* RtPcsc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097B899259356210090DC62 /* RtPcsc.framework */; };
-		3097B89D259356DD0090DC62 /* RtPcsc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3097B899259356210090DC62 /* RtPcsc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3097B8A025935B610090DC62 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097B89F25935B610090DC62 /* libstdc++.6.0.9.tbd */; };
-		3097B8A225935CAE0090DC62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097B8A125935CAD0090DC62 /* Security.framework */; };
-		3097B8A425935E060090DC62 /* libcsp_scards.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097B8A325935E060090DC62 /* libcsp_scards.o */; };
-		3097B8A72594B1310090DC62 /* Cades.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097B8A62594B1310090DC62 /* Cades.m */; };
-		3097B8AE2594C42B0090DC62 /* Certificate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097B8AD2594C42B0090DC62 /* Certificate.m */; };
+		3097BADF2595F5270090DC62 /* Certificate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097BADB2595F5270090DC62 /* Certificate.m */; };
+		3097BAE02595F5270090DC62 /* Cades.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097BADE2595F5270090DC62 /* Cades.m */; };
+		3097BAE52595F5590090DC62 /* libcsp_scards.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAE42595F5590090DC62 /* libcsp_scards.o */; };
+		3097BAEA2595F5BB0090DC62 /* CPROPKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAE92595F5BB0090DC62 /* CPROPKI.framework */; };
+		3097BAEC2595F5C40090DC62 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAEB2595F5C40090DC62 /* libstdc++.6.0.9.tbd */; };
+		3097BAEF2595F6320090DC62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAEE2595F6320090DC62 /* Security.framework */; };
+		3097BAF22595F6A00090DC62 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAF12595F6A00090DC62 /* libxml2.tbd */; };
+		3097BAF42595F6BE0090DC62 /* RtPcsc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAE72595F5B30090DC62 /* RtPcsc.framework */; };
+		3097BAF52595F6BE0090DC62 /* RtPcsc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAE72595F5B30090DC62 /* RtPcsc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4112BC1215FA2AD700F7DD47 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4112BC1115FA2AD700F7DD47 /* ExternalAccessory.framework */; };
 		4152198E12B79AA200E4CD7A /* SignFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4152198D12B79AA200E4CD7A /* SignFile.cpp */; };
 		4152199012B79B8600E4CD7A /* CreateFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4152198F12B79B8600E4CD7A /* CreateFileViewController.xib */; };
@@ -61,13 +61,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3097B89E259356DD0090DC62 /* Embed Frameworks */ = {
+		3097BAF62595F6BE0090DC62 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3097B89D259356DD0090DC62 /* RtPcsc.framework in Embed Frameworks */,
+				3097BAF52595F6BE0090DC62 /* RtPcsc.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,16 +117,16 @@
 		2A6C49F31A4D68CB00A5D42B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../CPROCSP.framework/Resources/Images.xcassets; sourceTree = "<group>"; };
 		2A84C3141A35E9E700649856 /* EnumReaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumReaders.h; sourceTree = "<group>"; };
 		2A84C3151A35E9E700649856 /* EnumReaders.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EnumReaders.mm; sourceTree = "<group>"; };
-		3097B891259351CA0090DC62 /* CPROPKI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CPROPKI.framework; path = ../CPROPKI.framework; sourceTree = "<group>"; };
-		3097B8942593520D0090DC62 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
-		3097B899259356210090DC62 /* RtPcsc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RtPcsc.framework; path = ../RtPcsc.framework; sourceTree = "<group>"; };
-		3097B89F25935B610090DC62 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "../libstdc++.6.0.9.tbd"; sourceTree = "<group>"; };
-		3097B8A125935CAD0090DC62 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		3097B8A325935E060090DC62 /* libcsp_scards.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = libcsp_scards.o; path = ../CPROCSP.framework/readers/libcsp_scards.o; sourceTree = "<group>"; };
-		3097B8A62594B1310090DC62 /* Cades.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cades.m; sourceTree = "<group>"; };
-		3097B8A82594B13D0090DC62 /* Cades.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cades.h; sourceTree = "<group>"; };
-		3097B8A92594B4F40090DC62 /* Certificate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Certificate.h; sourceTree = "<group>"; };
-		3097B8AD2594C42B0090DC62 /* Certificate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Certificate.m; sourceTree = "<group>"; };
+		3097BADB2595F5270090DC62 /* Certificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Certificate.m; sourceTree = "<group>"; };
+		3097BADC2595F5270090DC62 /* Cades.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cades.h; sourceTree = "<group>"; };
+		3097BADD2595F5270090DC62 /* Certificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Certificate.h; sourceTree = "<group>"; };
+		3097BADE2595F5270090DC62 /* Cades.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cades.m; sourceTree = "<group>"; };
+		3097BAE42595F5590090DC62 /* libcsp_scards.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = libcsp_scards.o; path = ../CPROCSP.framework/readers/libcsp_scards.o; sourceTree = "<group>"; };
+		3097BAE72595F5B30090DC62 /* RtPcsc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RtPcsc.framework; path = ../RtPcsc.framework; sourceTree = "<group>"; };
+		3097BAE92595F5BB0090DC62 /* CPROPKI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CPROPKI.framework; path = ../CPROPKI.framework; sourceTree = "<group>"; };
+		3097BAEB2595F5C40090DC62 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "../libstdc++.6.0.9.tbd"; sourceTree = "<group>"; };
+		3097BAEE2595F6320090DC62 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3097BAF12595F6A00090DC62 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		4112BC1115FA2AD700F7DD47 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		4152198C12B79AA200E4CD7A /* SignFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignFile.h; sourceTree = "<group>"; };
 		4152198D12B79AA200E4CD7A /* SignFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SignFile.cpp; sourceTree = "<group>"; };
@@ -141,19 +141,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3097B8A425935E060090DC62 /* libcsp_scards.o in Frameworks */,
+				3097BAF22595F6A00090DC62 /* libxml2.tbd in Frameworks */,
+				3097BAF42595F6BE0090DC62 /* RtPcsc.framework in Frameworks */,
 				4112BC1215FA2AD700F7DD47 /* ExternalAccessory.framework in Frameworks */,
-				3097B8A225935CAE0090DC62 /* Security.framework in Frameworks */,
-				3097B8A025935B610090DC62 /* libstdc++.6.0.9.tbd in Frameworks */,
-				3097B8952593520D0090DC62 /* libxml2.2.tbd in Frameworks */,
-				3097B892259351CA0090DC62 /* CPROPKI.framework in Frameworks */,
+				3097BAEF2595F6320090DC62 /* Security.framework in Frameworks */,
+				3097BAEC2595F5C40090DC62 /* libstdc++.6.0.9.tbd in Frameworks */,
+				3097BAEA2595F5BB0090DC62 /* CPROPKI.framework in Frameworks */,
+				3097BAE52595F5590090DC62 /* libcsp_scards.o in Frameworks */,
 				2A1F53FB19E7C8BB009A9881 /* CPROCSP.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				4152199A12B79CC800E4CD7A /* libiconv.dylib in Frameworks */,
 				41FBF20E132290760038C564 /* libz.dylib in Frameworks */,
-				3097B89C259356DD0090DC62 /* RtPcsc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,16 +163,16 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3097BADC2595F5270090DC62 /* Cades.h */,
+				3097BADE2595F5270090DC62 /* Cades.m */,
+				3097BADD2595F5270090DC62 /* Certificate.h */,
+				3097BADB2595F5270090DC62 /* Certificate.m */,
 				2A84C3141A35E9E700649856 /* EnumReaders.h */,
 				2A84C3151A35E9E700649856 /* EnumReaders.mm */,
 				28C286DF0D94DF7D0034E888 /* CreateFileViewController.h */,
 				28C286E00D94DF7D0034E888 /* CreateFileViewController.mm */,
 				1D3623240D0F684500981E51 /* CreateFileAppDelegate.h */,
 				1D3623250D0F684500981E51 /* CreateFileAppDelegate.mm */,
-				3097B8A92594B4F40090DC62 /* Certificate.h */,
-				3097B8AD2594C42B0090DC62 /* Certificate.m */,
-				3097B8A82594B13D0090DC62 /* Cades.h */,
-				3097B8A62594B1310090DC62 /* Cades.m */,
 				4152198C12B79AA200E4CD7A /* SignFile.h */,
 				4152198D12B79AA200E4CD7A /* SignFile.cpp */,
 			);
@@ -250,12 +250,12 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3097B8A325935E060090DC62 /* libcsp_scards.o */,
-				3097B8A125935CAD0090DC62 /* Security.framework */,
-				3097B89F25935B610090DC62 /* libstdc++.6.0.9.tbd */,
-				3097B899259356210090DC62 /* RtPcsc.framework */,
-				3097B8942593520D0090DC62 /* libxml2.2.tbd */,
-				3097B891259351CA0090DC62 /* CPROPKI.framework */,
+				3097BAF12595F6A00090DC62 /* libxml2.tbd */,
+				3097BAEE2595F6320090DC62 /* Security.framework */,
+				3097BAEB2595F5C40090DC62 /* libstdc++.6.0.9.tbd */,
+				3097BAE92595F5BB0090DC62 /* CPROPKI.framework */,
+				3097BAE72595F5B30090DC62 /* RtPcsc.framework */,
+				3097BAE42595F5590090DC62 /* libcsp_scards.o */,
 				2A1F53FA19E7C8BB009A9881 /* CPROCSP.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -295,7 +295,7 @@
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				2A1F543A19E7CB4A009A9881 /* ShellScript */,
-				3097B89E259356DD0090DC62 /* Embed Frameworks */,
+				3097BAF62595F6BE0090DC62 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -386,7 +386,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./../CPROCSP.framework/ConfigureApplication\n";
+			shellScript = ./../CPROCSP.framework/ConfigureApplication;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -395,9 +395,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3097B8A72594B1310090DC62 /* Cades.m in Sources */,
-				3097B8AE2594C42B0090DC62 /* Certificate.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.mm in Sources */,
+				3097BADF2595F5270090DC62 /* Certificate.m in Sources */,
+				3097BAE02595F5270090DC62 /* Cades.m in Sources */,
 				1D3623260D0F684500981E51 /* CreateFileAppDelegate.mm in Sources */,
 				28C286E10D94DF7D0034E888 /* CreateFileViewController.mm in Sources */,
 				4152198E12B79AA200E4CD7A /* SignFile.cpp in Sources */,
@@ -464,11 +464,11 @@
 				INFOPLIST_FILE = "CreateFile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "/Users/tester/Downloads/ios-uni";
+				LIBRARY_SEARCH_PATHS = ../;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-force_load",
-					"/Users/tester/Downloads/ios-uni/RtPcsc.framework/RtPcsc",
+					../RtPcsc.framework/RtPcsc,
 				);
 				PRODUCT_NAME = CreateFile;
 			};
@@ -493,11 +493,11 @@
 				INFOPLIST_FILE = "CreateFile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "/Users/tester/Downloads/ios-uni";
+				LIBRARY_SEARCH_PATHS = ../;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-force_load",
-					"/Users/tester/Downloads/ios-uni/RtPcsc.framework/RtPcsc",
+					../RtPcsc.framework/RtPcsc,
 				);
 				PRODUCT_NAME = CreateFile;
 				VALIDATE_PRODUCT = YES;

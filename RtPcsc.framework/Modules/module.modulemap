@@ -1,4 +1,0 @@
-framework module RtPcsc {
-  header "RtPcsc-Swift.h"
-  requires objc
-}
