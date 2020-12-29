@@ -166,6 +166,7 @@ CSP_BOOL do_low_sign(const uint8_t* msg, size_t msg_size, const PCCERT_CONTEXT c
     // Создаем подписанное сообщение
     if (!CadesSignMessage(&para, 0, 1, pbToBeSigned, cbToBeSigned, &pSignedMessage)) {
         cout << "CadesSignMessage() failed" << endl;
+        DWORD error = CSP_GetLastError();
         goto free_tsp;
     }
     if (pChainContext)

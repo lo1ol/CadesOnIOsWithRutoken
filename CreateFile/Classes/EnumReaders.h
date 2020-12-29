@@ -7,4 +7,6 @@
 @property (assign, readwrite) uint8_t flags;
 -(CProReader*) initWithData:(uint8_t*)dataPtr;
 +(NSArray*) getReaderList;
++(bool) waitForNfcInsert;
++(void)installCerts;
 @end

@@ -30,19 +30,14 @@
         <true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
-        <key>UISupportedExternalAccessoryProtocols</key>
-	<array>
-		<string>com.ftsafe.CRD</string>
-		<string>com.ftsafe.iR301</string>
-	</array>
 
-	<key>NSBluetoothAlwaysUsageDescription</key>
-        <string>Bluetooth будет использован для работы с устройствами Рутокен</string>
-        <key>NSBluetoothPeripheralUsageDescription</key>
-        <string>Access bluetooth smartcard</string>
-        <key>UISupportedExternalAccessoryProtocols</key>
+	<key>NFCReaderUsageDescription</key>
+	<string>Allow NFC scanning</string>
+        <key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
         <array>
-        	<string>com.aktivco.rutokenecp</string>
-        </array>
+                <string>F00000000010000000000100</string>
+                <string>A000000151000000</string>
+                <string>A00000039742544659</string>
+        </array>	
 </dict>
 </plist>

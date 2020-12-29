@@ -12,6 +12,7 @@
 #import <sys/stat.h>
 #import "EnumReaders.h"
 #import "Cades.h"
+#import <RtPcsc/rtnfc.h>
 
 extern bool USE_CACHE_DIR;
 bool USE_CACHE_DIR = false;
@@ -34,8 +35,21 @@ bool USE_CACHE_DIR = false;
 	[self launchPane];
 }
 
+-(IBAction)getCerts:(id)sender{
+    startNFC(^(NSError* error) { NSLog(@"%@", error.localizedDescription); });
+    [CProReader waitForNfcInsert];
+    [CProReader installCerts];
+    stopNFC();
+}
+
 -(IBAction)startEnumReaders:(id)sender {
+    startNFC(^(NSError* error) {
+        NSLog(@"%@",[error localizedDescription]);
+             });
+    sleep(5);
+    //[CProReader waitForNfcInsert];
     [CProReader getReaderList];
+    stopNFC();
 }
 
 -(void) launchPane
@@ -104,6 +118,9 @@ void lslr(const char * path)
 // Display dialog box
 - (void) createTestFile
 {
+    startNFC(^(NSError* error) { NSLog(@"%@", error.localizedDescription); });
+    [CProReader waitForNfcInsert];
+    
     self.content = @"Test123";
     
     NSArray* certs = [Cades getCertificates];
@@ -118,10 +135,11 @@ void lslr(const char * path)
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign" message:@"sign failed." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 		[alert show];
 	}
+    
+    stopNFC();
 }
 
 - (void) readTestFile
-
 {
     BOOL ret = [Cades verifySignature: signature];
 	
