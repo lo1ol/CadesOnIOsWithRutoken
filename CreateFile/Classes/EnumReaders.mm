@@ -300,9 +300,6 @@ bool addCertToStore(PCCERT_CONTEXT pcert)
         
         
         CRYPT_KEY_PROV_INFO KeyProvInfo;
-//        CRYPT_KEY_PROV_PARAM key_prov_param;
-//        const char *pbPin = "12345678";
-//        DWORD cbPin = strlen(pbPin);
 //
         LPWSTR wContName = new wchar_t[strlen(contName)+1];
         mbstowcs (wContName, contName, strlen(contName)+1);
@@ -312,16 +309,11 @@ bool addCertToStore(PCCERT_CONTEXT pcert)
         KeyProvInfo.dwProvType = kGostProvType;
         KeyProvInfo.dwKeySpec = AT_KEYEXCHANGE;
         KeyProvInfo.dwFlags = 0;
-        KeyProvInfo.cProvParam = 0; //1;
-        KeyProvInfo.rgProvParam = NULL; //&key_prov_param;
-        
-//        key_prov_param.dwParam = PP_KEYEXCHANGE_PIN;
-//        key_prov_param.cbData = cbPin;
-//        key_prov_param.pbData = (uint8_t *) pbPin;
+        KeyProvInfo.cProvParam = 0;
+        KeyProvInfo.rgProvParam = NULL;
         
         if (!CertSetCertificateContextProperty(certificate, CERT_KEY_PROV_INFO_PROP_ID, NULL, (void *) &KeyProvInfo)) {
             printf("CertSetCertificateContextProperty error");
-            DWORD error = CSP_GetLastError();
             delete[] pbProvName;
             delete[] wContName;
             delete pbCertBlob;

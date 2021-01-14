@@ -100,9 +100,12 @@ NSDate* FileTimeToDate (FILETIME* ft)
     return FileTimeToDate(&rawCert->pCertInfo->NotAfter);
 }
 
--(void) close
+-(DWORD) close
 {
-    CertFreeCertificateContext(rawCert);
+    if(!CertFreeCertificateContext(rawCert)) {
+        return CSP_GetLastError();
+    }
+    return ERROR_SUCCESS;
 }
 
 @end

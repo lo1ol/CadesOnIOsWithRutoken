@@ -36,20 +36,21 @@ bool USE_CACHE_DIR = false;
 }
 
 -(IBAction)getCerts:(id)sender{
-    startNFC(^(NSError* error) { NSLog(@"%@", error.localizedDescription); });
-    [CProReader waitForNfcInsert];
+//    startNFC(^(NSError* error) {
+//        NSLog(@"%@",[error localizedDescription]);
+//             });
+//    [CProReader waitForNfcInsert];
     [CProReader installCerts];
-    stopNFC();
+//    stopNFC();
 }
 
 -(IBAction)startEnumReaders:(id)sender {
-    startNFC(^(NSError* error) {
-        NSLog(@"%@",[error localizedDescription]);
-             });
-    sleep(5);
-    //[CProReader waitForNfcInsert];
+//    startNFC(^(NSError* error) {
+//        NSLog(@"%@",[error localizedDescription]);
+//             });
+//    [CProReader waitForNfcInsert];
     [CProReader getReaderList];
-    stopNFC();
+//    stopNFC();
 }
 
 -(void) launchPane
@@ -118,39 +119,64 @@ void lslr(const char * path)
 // Display dialog box
 - (void) createTestFile
 {
-    startNFC(^(NSError* error) { NSLog(@"%@", error.localizedDescription); });
-    [CProReader waitForNfcInsert];
+//    startNFC(^(NSError* error) { NSLog(@"%@", error.localizedDescription); });
+//    [CProReader waitForNfcInsert];
     
     self.content = @"Test123";
+    __block NSArray* gCerts;
     
-    NSArray* certs = [Cades getCertificates];
-    self.signature = [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding] withCert: certs[0] withTSP: @"http://testca.cryptopro.ru/tsp/tsp.srf"];
-    [Cades closeCertificates:certs];
+    __block void (^onFinal)();
+    __block void (^onErrorBlock)(NSError*);
+    __block void (^onSuccessBlock)(NSString*);
+    __block void (^signBlock)(NSArray*);
     
-	if(signature){
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign" message:@"everything is ok." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[alert show];
-	}
-	else{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign" message:@"sign failed." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[alert show];
-	}
+    signBlock = ^(NSArray* certs) {
+       gCerts = certs;
+        [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding] withCert: certs[0] withPin: nil withTSP: @"http://testca.cryptopro.ru/tsp/tsp.srf" successCallback: onSuccessBlock errorCallback: onErrorBlock];
+   };
     
-    stopNFC();
+    onSuccessBlock = ^(NSString* signature) {
+        self.signature = signature;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign" message:@"everything is ok." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+        
+        onFinal();
+    };
+    
+    onErrorBlock = ^(NSError* error) {
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign" message: [NSString stringWithFormat: @"sign failed. Error code: 0x%lx", error.code] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+       [alert show];
+       
+        onFinal();
+   };
+    
+    onFinal = ^() {
+        if (gCerts) {
+            NSArray* certs = gCerts;
+            gCerts = nil;
+            [Cades closeCertificates:certs successCallback:^(){} errorCallback:onErrorBlock];
+        }
+        
+//        stopNFC();
+    };
+    
+    [Cades getCertificatesWithSuccessCallback: signBlock errorCallback:onErrorBlock ];
 }
 
 - (void) readTestFile
 {
-    BOOL ret = [Cades verifySignature: signature];
+    void (^onErrorBlock)(NSError*) = ^(NSError* error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message: [NSString stringWithFormat: @"signature was not verified. Error code: 0x%lx", error.code]delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    };
+    
+    void (^onSuccessBlock)(NSInteger) = ^(NSInteger status) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message: [NSString stringWithFormat: @"signature verification status is 0x%lx", status] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    };
+    
+    [Cades verifySignature: signature successCallback: onSuccessBlock errorCallback: onErrorBlock];
 	
-	if(ret){
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message:@"signature was verified" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[alert show];
-	}
-	else{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message:@"signature was not verified" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[alert show];
-	}	
 }
 
 @end

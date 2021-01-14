@@ -20,7 +20,7 @@
 @property (readwrite) PCCERT_CONTEXT rawCert;
 
 -(Certificate*) initWithRawCert:(PCCERT_CONTEXT)rawCert;
--(void) close;
+-(DWORD) close;
 
 @end
 
