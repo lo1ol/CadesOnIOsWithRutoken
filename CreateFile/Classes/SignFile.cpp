@@ -13,63 +13,219 @@
 #include "SignFile.h"
 
 extern bool USE_CACHE_DIR;
+bool USE_CACHE_DIR = false;
+static const int kGostProvType = PROV_GOST_2012_256;
 
 DWORD get_certs(PCCERT_CONTEXT** certs, size_t* count)
 {
-    PCCERT_CONTEXT userCert = NULL;
-    CSP_BOOL bResult = FALSE;
     DWORD            dwSize = 0;
+    *count = 0;
+    *certs = NULL;
     CRYPT_KEY_PROV_INFO *pProvInfo = NULL;
     DWORD rv = ERROR_SUCCESS;
+    HCRYPTPROV hProv;
     std::vector<PCCERT_CONTEXT> certs_vector = std::vector<PCCERT_CONTEXT>();
+    DWORD fParam = CRYPT_FIRST;
+    DWORD cnt = 0;
+    BYTE* pbCertBlob = 0;
+    DWORD dwCertBlob = 0;
+    char* contName = NULL;
+    PCCERT_CONTEXT certificate = 0;
+    PCCERT_CONTEXT certDup = 0;
     
-    HCERTSTORE hCertStore = CertOpenSystemStore(0, "My");
-    if(!hCertStore){
+    //
+    // 1. Acquire context to enumerate containers.
+    //
+    if (!CryptAcquireContext(&hProv, NULL, NULL, kGostProvType, CRYPT_VERIFYCONTEXT)) {
+        printf("CryptAcquireContext failed\n");
         rv = CSP_GetLastError();
-        std::cerr << "CertOpenSystemStore failed." << std::endl;
         goto exit;
     }
-    
 
-    while(true){
-        userCert = CertFindCertificateInStore(hCertStore, X509_ASN_ENCODING | PKCS_7_ASN_ENCODING, 0, CERT_FIND_ANY, 0, userCert);
-        if(!userCert){
-            break;
+    //
+    // 2. Enumerate containers and collect all CERT_CONTEXTs.
+    //
+    while (true)
+    {
+        cnt++;
+        HCRYPTKEY hKey;
+        HCRYPTPROV hProv2;
+        DWORD size = 0;
+        DWORD cbProvName;
+        LPWSTR pbProvName = NULL;
+        CRYPT_KEY_PROV_INFO KeyProvInfo;
+        LPWSTR wContName = NULL;
+        bool forceStopWhile = false;
+        
+        if (!CryptGetProvParam(hProv, PP_ENUMCONTAINERS, NULL, &size, fParam)) {
+            rv = CSP_GetLastError();
+            goto stop_while;
         }
-        bResult = CertGetCertificateContextProperty(userCert,
-                    CERT_KEY_PROV_INFO_PROP_ID, NULL, &dwSize);
-        if (bResult) {
-            free(pProvInfo);
-            pProvInfo = (CRYPT_KEY_PROV_INFO *)malloc(dwSize);
-            if (pProvInfo) {
-                bResult = CertGetCertificateContextProperty(userCert, CERT_KEY_PROV_INFO_PROP_ID, pProvInfo, &dwSize);
-                certs_vector.push_back(CertDuplicateCertificateContext(userCert));
+        
+        contName = (char *) malloc(size);
+        if (!CryptGetProvParam(hProv, PP_ENUMCONTAINERS, (BYTE *) contName, &size, fParam)) {
+            rv = CSP_GetLastError();
+            if (rv == ERROR_NO_MORE_ITEMS) {
+                rv = ERROR_SUCCESS;
+                forceStopWhile = true;
             }
+            goto free_cont_name;
+        }
+        
+        fParam = 0;
+        
+        printf("Container name: %s\n", contName);
+
+        //
+        // 3. Start work with a container.
+        //
+        if(!CryptAcquireContext(&hProv2, (char*) contName, NULL, kGostProvType, NULL)) {
+            printf("CryptAcquireContext failed\n");
+            rv = CSP_GetLastError();
+            goto free_cont_name;
+        }
+
+        if (!CryptGetUserKey(hProv2, AT_KEYEXCHANGE, &hKey)) {
+            printf("CryptGetUserKey failed\n");
+            rv = CSP_GetLastError();
+            goto release_context2;
+        }
+
+        //
+        // Get size of certificate.
+        //
+        if (!CryptGetKeyParam(hKey, KP_CERTIFICATE, NULL, &dwCertBlob, NULL)) {
+            printf("CryptGetKeyParam failed\n");
+            rv = CSP_GetLastError();
+            goto free_key;
+        }
+
+        //
+        // Read certificate.
+        //
+        pbCertBlob = new BYTE[dwCertBlob];
+        if (!CryptGetKeyParam(hKey, KP_CERTIFICATE, pbCertBlob, &dwCertBlob, NULL)) {
+            printf("Get certificate blob failed\n");
+            rv = CSP_GetLastError();
+            goto free_cert_blob;
+        }
+
+        //
+        // Create certificate context from just read binary data.
+        //
+        certificate = CertCreateCertificateContext( PKCS_7_ASN_ENCODING | X509_ASN_ENCODING, pbCertBlob, dwCertBlob);
+        
+        if (!certificate) {
+            printf("CertCreateCertificateContext failed\n");
+            rv = CSP_GetLastError();
+            goto free_cert_blob;
+        }
+        
+        if(!CryptGetDefaultProviderW(
+            kGostProvType,
+            NULL,
+            CRYPT_MACHINE_DEFAULT,
+            NULL,
+            &cbProvName))
+        {
+            printf("Error getting the length of the default provider name.");
+            rv = CSP_GetLastError();
+            goto free_cert_context;
+        }
+        
+        pbProvName = new wchar_t[cbProvName];
+        if(!CryptGetDefaultProviderW(
+            kGostProvType,
+            NULL,
+            CRYPT_MACHINE_DEFAULT,
+            pbProvName,
+            &cbProvName))
+        {
+            printf("Error getting the length of the default provider name.");
+            rv = CSP_GetLastError();
+            goto free_prov_name;
+        }
+        
+        wContName = new wchar_t[strlen(contName)+1];
+        mbstowcs (wContName, contName, strlen(contName)+1);
+        
+        KeyProvInfo.pwszContainerName = wContName;
+        KeyProvInfo.pwszProvName = pbProvName;
+        KeyProvInfo.dwProvType = kGostProvType;
+        KeyProvInfo.dwKeySpec = AT_KEYEXCHANGE;
+        KeyProvInfo.dwFlags = 0;
+        KeyProvInfo.cProvParam = 0;
+        KeyProvInfo.rgProvParam = NULL;
+        
+        if (!CertSetCertificateContextProperty(certificate, CERT_KEY_PROV_INFO_PROP_ID, NULL, (void *) &KeyProvInfo)) {
+            printf("CertSetCertificateContextProperty error");
+            rv = CSP_GetLastError();
+            goto free_wcont_name;
+        }
+        
+        certDup = CertDuplicateCertificateContext(certificate);
+        if (!certDup) {
+            goto free_wcont_name;
+        }
+        
+        certs_vector.push_back(certDup);
+       
+free_wcont_name:
+        delete[] wContName;
+        wContName = NULL;
+        
+free_prov_name:
+        delete[] pbProvName;
+        pbProvName = NULL;
+        
+free_cert_context:
+        CertFreeCertificateContext(certificate);
+        
+free_cert_blob:
+        delete[] pbCertBlob;
+        pbProvName = NULL;
+        
+free_key:
+        CryptDestroyKey(hKey);
+        
+release_context2:
+        CryptReleaseContext(hProv2, 0);
+        
+free_cont_name:
+        free(contName);
+        contName = NULL;
+        
+stop_while:
+        if (rv != ERROR_SUCCESS) {
+            goto release_context;
+        }
+        
+        if (forceStopWhile) {
+            break;
         }
     }
     
-    free(pProvInfo);
-    
     if (!certs_vector.size()) {
-        std::cerr << "No certs found" << std::endl;
-        rv = ERROR_NO_MORE_ITEMS;
-        goto close_cert_store;
+        count=0;
+        certs = NULL;
+        goto release_context;
     }
     
     *certs = (PCCERT_CONTEXT*) malloc(sizeof(certs_vector[0])* certs_vector.size());
     if (!certs) {
         rv = ERROR_CANNOT_COPY;
-        goto close_cert_store;
+        goto release_context;
     }
     
     memcpy(*certs, certs_vector.data(), sizeof(certs_vector[0])*certs_vector.size());
     *count=certs_vector.size();
     
-close_cert_store:
+release_context:
     // Закрываем хранилище
-    if (!CertCloseStore(hCertStore, 0)) {
+    if (!CryptReleaseContext(hProv, 0)) {
         free(*certs);
         *certs = nullptr;
+        count = 0;
         std::cout << "Certificate store handle was not closed." << std::endl;
         rv = CSP_GetLastError();
     }
@@ -227,6 +383,9 @@ DWORD do_low_sign(const char* pin, const uint8_t* msg, size_t msg_size, const PC
         goto free_prov_info;
     }
     
+    DWORD res;
+    VerifyCertificate(context, &res);
+    
     for (i = 0; i < pChainContext->rgpChain[0]->cElement-1; ++i)
     {
         certs.push_back(pChainContext->rgpChain[0]->rgpElement[i]->pCertContext);
@@ -243,6 +402,7 @@ DWORD do_low_sign(const char* pin, const uint8_t* msg, size_t msg_size, const PC
     if (!CadesSignMessage(&para, 0, 1, pbToBeSigned, cbToBeSigned, &pSignedMessage)) {
         std::cerr << "CadesSignMessage() failed" << std::endl;
         rv = CSP_GetLastError();
+        ERROR_SUCCESS;
         goto free_cert_chain;
     }
     

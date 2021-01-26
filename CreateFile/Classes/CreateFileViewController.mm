@@ -14,9 +14,6 @@
 #import "Cades.h"
 #import <RtPcsc/rtnfc.h>
 
-extern bool USE_CACHE_DIR;
-bool USE_CACHE_DIR = false;
-
 @implementation CreateFileViewController
 @synthesize content;
 @synthesize signature;
@@ -36,21 +33,21 @@ bool USE_CACHE_DIR = false;
 }
 
 -(IBAction)getCerts:(id)sender{
-//    startNFC(^(NSError* error) {
-//        NSLog(@"%@",[error localizedDescription]);
-//             });
-//    [CProReader waitForNfcInsert];
+    startNFC(^(NSError* error) {
+        NSLog(@"%@",[error localizedDescription]);
+             });
+    [CProReader waitForNfcInsert];
     [CProReader installCerts];
-//    stopNFC();
+    stopNFC();
 }
 
 -(IBAction)startEnumReaders:(id)sender {
-//    startNFC(^(NSError* error) {
-//        NSLog(@"%@",[error localizedDescription]);
-//             });
-//    [CProReader waitForNfcInsert];
+    startNFC(^(NSError* error) {
+        NSLog(@"%@",[error localizedDescription]);
+             });
+    [CProReader waitForNfcInsert];
     [CProReader getReaderList];
-//    stopNFC();
+    stopNFC();
 }
 
 -(void) launchPane
@@ -119,8 +116,8 @@ void lslr(const char * path)
 // Display dialog box
 - (void) createTestFile
 {
-//    startNFC(^(NSError* error) { NSLog(@"%@", error.localizedDescription); });
-//    [CProReader waitForNfcInsert];
+    startNFC(^(NSError* error) { NSLog(@"%@", error.localizedDescription); });
+    [CProReader waitForNfcInsert];
     
     self.content = @"Test123";
     __block NSArray* gCerts;
@@ -132,7 +129,7 @@ void lslr(const char * path)
     
     signBlock = ^(NSArray* certs) {
        gCerts = certs;
-        [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding] withCert: certs[0] withPin: nil withTSP: @"http://testca.cryptopro.ru/tsp/tsp.srf" successCallback: onSuccessBlock errorCallback: onErrorBlock];
+        [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding] withCert: certs[0] withPin: @"12345678" withTSP: @"http://testca.cryptopro.ru/tsp/tsp.srf" successCallback: onSuccessBlock errorCallback: onErrorBlock];
    };
     
     onSuccessBlock = ^(NSString* signature) {
@@ -157,7 +154,7 @@ void lslr(const char * path)
             [Cades closeCertificates:certs successCallback:^(){} errorCallback:onErrorBlock];
         }
         
-//        stopNFC();
+        stopNFC();
     };
     
     [Cades getCertificatesWithSuccessCallback: signBlock errorCallback:onErrorBlock ];

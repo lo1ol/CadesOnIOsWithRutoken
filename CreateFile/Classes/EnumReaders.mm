@@ -53,7 +53,6 @@
     DWORD dwMaxLen;
     
     for (;;) {
-        
         if (cryptFirst) {
             CSP_SetLastError(ERROR_SUCCESS);
             bResult = CryptGetProvParam(hCryptProv, PP_ENUMREADERS, NULL, &dwMaxLen, CRYPT_MEDIA | cryptFirst);
@@ -108,7 +107,6 @@
     [alert show];
     //NSString * name = [readerList [CProReader name]];
         return readerList;
-    
 }
 
 +(bool) waitForNfcInsert
@@ -134,7 +132,6 @@
         DWORD dwMaxLen;
         
         for (;;) {
-            
             if (cryptFirst) {
                 CSP_SetLastError(ERROR_SUCCESS);
                 bResult = CryptGetProvParam(hCryptProv, PP_ENUMREADERS, NULL, &dwMaxLen, CRYPT_MEDIA | cryptFirst);
