@@ -21,7 +21,6 @@
 -(IBAction)startReadingFile:(id)sender;
 -(IBAction)startPane:(id)sender;
 -(IBAction)startEnumReaders:(id)sender;
--(IBAction)getCerts:(id)sender;
 -(void)createTestFile;
 -(void)readTestFile;
 -(void)launchPane;

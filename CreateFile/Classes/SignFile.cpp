@@ -59,6 +59,10 @@ DWORD get_certs(PCCERT_CONTEXT** certs, size_t* count)
         
         if (!CryptGetProvParam(hProv, PP_ENUMCONTAINERS, NULL, &size, fParam)) {
             rv = CSP_GetLastError();
+            if (rv == ERROR_NO_MORE_ITEMS) {
+                rv = ERROR_SUCCESS;
+                forceStopWhile = true;
+            }
             goto stop_while;
         }
         
@@ -402,7 +406,6 @@ DWORD do_low_sign(const char* pin, const uint8_t* msg, size_t msg_size, const PC
     if (!CadesSignMessage(&para, 0, 1, pbToBeSigned, cbToBeSigned, &pSignedMessage)) {
         std::cerr << "CadesSignMessage() failed" << std::endl;
         rv = CSP_GetLastError();
-        ERROR_SUCCESS;
         goto free_cert_chain;
     }
     

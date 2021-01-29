@@ -12,6 +12,7 @@
 #import <sys/stat.h>
 #import "EnumReaders.h"
 #import "Cades.h"
+#import "NfcWorker.h"
 #import <RtPcsc/rtnfc.h>
 
 @implementation CreateFileViewController
@@ -32,22 +33,64 @@
 	[self launchPane];
 }
 
--(IBAction)getCerts:(id)sender{
-    startNFC(^(NSError* error) {
-        NSLog(@"%@",[error localizedDescription]);
-             });
-    [CProReader waitForNfcInsert];
-    [CProReader installCerts];
-    stopNFC();
+-(void) startCallbackForNfcOtBtTokenWithSucessCallback: (void (^)(void)) successCallback errorCallback: (void (^)(void)) errorCallback
+{
+    UIAlertController * alert = [UIAlertController
+                                alertControllerWithTitle:@"Тип Рутокена"
+                                message:@"Выберете тип Вашего Рутокена:"
+                                preferredStyle:UIAlertControllerStyleActionSheet];
+
+   void (^nfcHandler)(UIAlertAction* action) =
+       ^void(UIAlertAction* action) {
+           [NfcWorker
+            startNfcSessionWithNfcErrorCallback: ^void(NSError* error)
+            {
+                NSLog(@"%@",[error localizedDescription]);
+                errorCallback();
+            }
+            
+            sucessCallback: successCallback
+       
+            errorCallback: errorCallback
+        ];
+       };
+   
+   UIAlertAction* nfcButton = [UIAlertAction
+                               actionWithTitle:@"NFC Рутокен"
+                               style:UIAlertActionStyleDefault
+                               handler:nfcHandler];
+
+   void (^btHandler)(UIAlertAction * action) =
+       ^void(UIAlertAction* action) {
+           successCallback();
+       };
+   
+   UIAlertAction* btButton = [UIAlertAction
+                              actionWithTitle:@"BT Рутокен"
+                              style:UIAlertActionStyleDefault
+                              handler:btHandler];
+   
+   [alert addAction:nfcButton];
+   [alert addAction:btButton];
+
+   [self presentViewController:alert animated:YES completion:nil];
 }
 
 -(IBAction)startEnumReaders:(id)sender {
-    startNFC(^(NSError* error) {
-        NSLog(@"%@",[error localizedDescription]);
-             });
-    [CProReader waitForNfcInsert];
-    [CProReader getReaderList];
-    stopNFC();
+    [self
+     startCallbackForNfcOtBtTokenWithSucessCallback:
+        ^() {
+            [CProReader getReaderList];
+            [NfcWorker stopNfcSessionWithSuccessCallback: ^(){}];
+        
+        }
+     
+     errorCallback:
+        ^() {
+            [NfcWorker stopNfcSessionWithSuccessCallback: ^(){}];
+        
+        }
+     ];
 }
 
 -(void) launchPane
@@ -116,9 +159,6 @@ void lslr(const char * path)
 // Display dialog box
 - (void) createTestFile
 {
-    startNFC(^(NSError* error) { NSLog(@"%@", error.localizedDescription); });
-    [CProReader waitForNfcInsert];
-    
     self.content = @"Test123";
     __block NSArray* gCerts;
     
@@ -153,11 +193,13 @@ void lslr(const char * path)
             gCerts = nil;
             [Cades closeCertificates:certs successCallback:^(){} errorCallback:onErrorBlock];
         }
-        
-        stopNFC();
+        [NfcWorker stopNfcSessionWithSuccessCallback: ^(){}];
     };
     
-    [Cades getCertificatesWithSuccessCallback: signBlock errorCallback:onErrorBlock ];
+    [self startCallbackForNfcOtBtTokenWithSucessCallback: ^() {
+        [Cades getCertificatesWithSuccessCallback: signBlock errorCallback:onErrorBlock ]
+        ;} errorCallback: ^(){}];
+    
 }
 
 - (void) readTestFile

@@ -44,6 +44,8 @@
 		2A5B588D1C296C63004E6FDA /* root.sto in Resources */ = {isa = PBXBuildFile; fileRef = 2A5B588C1C296C63004E6FDA /* root.sto */; };
 		2A6C49F41A4D68CB00A5D42B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6C49F31A4D68CB00A5D42B /* Images.xcassets */; };
 		2A84C3161A35E9E700649856 /* EnumReaders.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A84C3151A35E9E700649856 /* EnumReaders.mm */; };
+		302C939A25C42CD100924DF1 /* rtpkcs11ecp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 302C939925C42CD100924DF1 /* rtpkcs11ecp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		302C93A025C4435600924DF1 /* NfcWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 302C939F25C4435600924DF1 /* NfcWorker.m */; };
 		302DBCA0259B6570007E2AF5 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAEB2595F5C40090DC62 /* libstdc++.6.0.9.tbd */; };
 		302DBCA3259B667B007E2AF5 /* RtPcsc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302DBCA1259B666B007E2AF5 /* RtPcsc.framework */; };
 		302DBCA4259B667B007E2AF5 /* RtPcsc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 302DBCA1259B666B007E2AF5 /* RtPcsc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -69,6 +71,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				302C939A25C42CD100924DF1 /* rtpkcs11ecp.framework in Embed Frameworks */,
 				302DBCA4259B667B007E2AF5 /* RtPcsc.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -119,10 +122,14 @@
 		2A6C49F31A4D68CB00A5D42B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../CPROCSP.framework/Resources/Images.xcassets; sourceTree = "<group>"; };
 		2A84C3141A35E9E700649856 /* EnumReaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnumReaders.h; sourceTree = "<group>"; };
 		2A84C3151A35E9E700649856 /* EnumReaders.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EnumReaders.mm; sourceTree = "<group>"; };
+		302C939925C42CD100924DF1 /* rtpkcs11ecp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rtpkcs11ecp.framework; path = ../rtpkcs11ecp.framework; sourceTree = "<group>"; };
+		302C939E25C4435600924DF1 /* NfcWorker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NfcWorker.h; sourceTree = "<group>"; };
+		302C939F25C4435600924DF1 /* NfcWorker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NfcWorker.m; sourceTree = "<group>"; };
 		302DBCA1259B666B007E2AF5 /* RtPcsc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RtPcsc.framework; path = ../RtPcsc.framework; sourceTree = "<group>"; };
 		302DBCB2259B731D007E2AF5 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 		302DBFA125B04CA0007E2AF5 /* CadesError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadesError.h; sourceTree = "<group>"; };
 		302DBFA225B04CA0007E2AF5 /* CadesError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadesError.m; sourceTree = "<group>"; };
+		307154F425C1CAFB00B78E89 /* libtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtest.a; path = ../libtest.a; sourceTree = "<group>"; };
 		3097BADB2595F5270090DC62 /* Certificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Certificate.m; sourceTree = "<group>"; };
 		3097BADC2595F5270090DC62 /* Cades.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cades.h; sourceTree = "<group>"; };
 		3097BADD2595F5270090DC62 /* Certificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Certificate.h; sourceTree = "<group>"; };
@@ -184,6 +191,8 @@
 				1D3623250D0F684500981E51 /* CreateFileAppDelegate.mm */,
 				4152198C12B79AA200E4CD7A /* SignFile.h */,
 				4152198D12B79AA200E4CD7A /* SignFile.cpp */,
+				302C939E25C4435600924DF1 /* NfcWorker.h */,
+				302C939F25C4435600924DF1 /* NfcWorker.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -199,6 +208,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				302C939925C42CD100924DF1 /* rtpkcs11ecp.framework */,
 				3097BAFD25960C270090DC62 /* CreateFile.entitlements */,
 				4112BC1115FA2AD700F7DD47 /* ExternalAccessory.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -260,6 +270,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				307154F425C1CAFB00B78E89 /* libtest.a */,
 				302DBCB2259B731D007E2AF5 /* CoreNFC.framework */,
 				302DBCA1259B666B007E2AF5 /* RtPcsc.framework */,
 				3097BAF12595F6A00090DC62 /* libxml2.tbd */,
@@ -406,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302C93A025C4435600924DF1 /* NfcWorker.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.mm in Sources */,
 				3097BADF2595F5270090DC62 /* Certificate.m in Sources */,
 				3097BAE02595F5270090DC62 /* Cades.m in Sources */,
@@ -485,6 +497,8 @@
 					"-all_load",
 					"-force_load",
 					../RtPcsc.framework/RtPcsc,
+					"-force_load",
+					../rtpkcs11ecp.framework/rtpkcs11ecp,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.rutoken.testappcreatefile;
 				PRODUCT_NAME = CreateFile;
@@ -520,6 +534,8 @@
 					"-all_load",
 					"-force_load",
 					../RtPcsc.framework/RtPcsc,
+					"-force_load",
+					../rtpkcs11ecp.framework/rtpkcs11ecp,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.rutoken.testappcreatefile;
 				PRODUCT_NAME = CreateFile;

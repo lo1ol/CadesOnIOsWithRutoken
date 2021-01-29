@@ -11,7 +11,6 @@
 #import "SignFile.h"
 
 
-
 @implementation Cades
 
 + (void)onError:(NSError*)error callback:(void (^)(NSError*))callback {
