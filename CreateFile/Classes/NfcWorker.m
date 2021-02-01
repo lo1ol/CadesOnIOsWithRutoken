@@ -5,19 +5,29 @@
 //  Created by tester on 29.01.2021.
 //
 #import "NfcWorker.h"
+#import "CadesError.h"
 
 #import <Foundation/Foundation.h>
 
 #import <rtpkcs11ecp/rtpkcs11.h>
 #import <RtPcsc/rtnfc.h>
 
+static NSString* const gPkcs11Domain = @"ru.cryptopro.pkcs11";
+
+
 @implementation NfcWorker
 
-+(void) waitForTokenWithStopFlag: (bool*) pStopFlag withLock: (NSLock *) lock successCallback:(void(^)(void)) successCallback errorCallback: (void(^)(void)) errorCallback
++(void) waitForTokenWithStopFlag: (bool*) pStopFlag withLock: (NSLock *) lock successCallback:(void(^)(void)) successCallback errorCallback: (void(^)(NSError*)) errorCallback
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
         for (;;) {
             CK_SLOT_ID slot;
+            
+            [lock lock];
+            if (*pStopFlag) {
+                return;
+            }
+            
             CK_RV rv = C_WaitForSlotEvent(CKF_DONT_BLOCK, &slot, NULL);
             
             if (rv == CKR_OK) {
@@ -29,25 +39,20 @@
                     });
                     return;
                 }
-            }
-            
-            [lock lock];
-            bool stopFlag = *pStopFlag;
-            [lock unlock];
-            
-            if (stopFlag) {
+            } else if (rv != CKR_NO_EVENT) {
                 dispatch_async(dispatch_get_main_queue(), ^() {
-                    errorCallback();
+                    errorCallback([NSError errorWithDomain:gPkcs11Domain code:rv userInfo:nil]);
                 });
                 return;
             }
+            [lock unlock];
             
             sleep(1);
         }
     });
 }
 
-+(void) startNfcSessionWithNfcErrorCallback: (void(^)(NSError* error)) nfcErrorCallback sucessCallback: (void(^)(void)) successCallback errorCallback: (void(^)(void)) errorCallback
++(void) startNfcSessionWithSucessCallback: (void(^)(void)) successCallback errorCallback: (void(^)(NSError*)) errorCallback
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
         
@@ -56,21 +61,6 @@
 
         __block NSLock* lock = [NSLock new];
         __block bool stopFlag = false;
-
-        void (^internalNfcErrorCallback)(NSError* error) =
-            ^void(NSError* error)
-            {
-                [lock lock];
-                stopFlag = true;
-                [lock unlock];
-                C_Finalize(NULL);
-                
-                dispatch_async(dispatch_get_main_queue(), ^() {
-                    nfcErrorCallback(error);
-                });
-            };
-        
-        startNFC(internalNfcErrorCallback);
         
         void (^internalSuccessCallback)(void) =
             ^void(void)
@@ -81,28 +71,27 @@
                 });
             };
         
-        void (^internalErrorCallback)(void) =
-            ^void(void)
+        void (^internalErrorCallback)(NSError*) =
+            ^void(NSError* error)
             {
+                [lock lock];
+                stopFlag = true;
                 C_Finalize(NULL);
+                [lock unlock];
+                
                 dispatch_async(dispatch_get_main_queue(), ^() {
-                    errorCallback();
+                    errorCallback(error);
                 });
             };
         
-            dispatch_async(dispatch_get_main_queue(), ^() {
-                [self waitForTokenWithStopFlag: &stopFlag withLock: lock successCallback:internalSuccessCallback errorCallback:errorCallback];
-            });
+        startNFC(internalErrorCallback);
+        
+        [self waitForTokenWithStopFlag: &stopFlag withLock: lock successCallback:internalSuccessCallback errorCallback:errorCallback];
     });
 }
 
 +(void) stopNfcSessionWithSuccessCallback:(void(^)(void)) successCallback
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
-        stopNFC();
-        dispatch_async(dispatch_get_main_queue(), ^() {
-            successCallback();
-        });
-    });
+    stopNFC();
 }
 @end

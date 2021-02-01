@@ -11,8 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NfcWorker : NSObject
 
-+(void) waitForTokenWithStopFlag: (bool*) pStopFlag withLock: (NSLock *) lock successCallback:(void(^)(void)) successCallback errorCallback: (void(^)(void)) errorCallback;
-+(void) startNfcSessionWithNfcErrorCallback: (void(^)(NSError* error)) nfcErrorCallback sucessCallback: (void(^)(void)) successCallback errorCallback: (void(^)(void)) errorCallback;
++(void) waitForTokenWithStopFlag: (bool*) pStopFlag withLock: (NSLock *) lock successCallback:(void(^)(void)) successCallback errorCallback: (void(^)(NSError*)) errorCallback;
++(void) startNfcSessionWithSucessCallback: (void(^)(void)) successCallback errorCallback: (void(^)(NSError*)) errorCallback;
 +(void) stopNfcSessionWithSuccessCallback:(void(^)(void)) successCallback;
 @end
 

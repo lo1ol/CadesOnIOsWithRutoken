@@ -15,6 +15,8 @@
 #import "NfcWorker.h"
 #import <RtPcsc/rtnfc.h>
 
+static NSString* const gCreateFileErrorDomain = @"ru.rutoken.testappcreatefile";
+
 @implementation CreateFileViewController
 @synthesize content;
 @synthesize signature;
@@ -33,7 +35,7 @@
 	[self launchPane];
 }
 
--(void) startCallbackForNfcOtBtTokenWithSucessCallback: (void (^)(void)) successCallback errorCallback: (void (^)(void)) errorCallback
+-(void) startCallbackForNfcOtBtTokenWithSucessCallback: (void (^)(void)) successCallback errorCallback: (void (^)(NSError*)) errorCallback
 {
     UIAlertController * alert = [UIAlertController
                                 alertControllerWithTitle:@"Тип Рутокена"
@@ -43,13 +45,7 @@
    void (^nfcHandler)(UIAlertAction* action) =
        ^void(UIAlertAction* action) {
            [NfcWorker
-            startNfcSessionWithNfcErrorCallback: ^void(NSError* error)
-            {
-                NSLog(@"%@",[error localizedDescription]);
-                errorCallback();
-            }
-            
-            sucessCallback: successCallback
+            startNfcSessionWithSucessCallback: successCallback
        
             errorCallback: errorCallback
         ];
@@ -86,9 +82,10 @@
         }
      
      errorCallback:
-        ^() {
+        ^(NSError* error) {
             [NfcWorker stopNfcSessionWithSuccessCallback: ^(){}];
-        
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Readers" message: [NSString stringWithFormat: @"Can't get readers list. Error code: 0x%lx", error.code]delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
         }
      ];
 }
@@ -168,8 +165,16 @@ void lslr(const char * path)
     __block void (^signBlock)(NSArray*);
     
     signBlock = ^(NSArray* certs) {
-       gCerts = certs;
-        [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding] withCert: certs[0] withPin: @"12345678" withTSP: @"http://testca.cryptopro.ru/tsp/tsp.srf" successCallback: onSuccessBlock errorCallback: onErrorBlock];
+        gCerts = certs;
+        if (gCerts.count == 0) {
+            NSDictionary* desc = [NSDictionary dictionaryWithObject : NSLocalizedString(@"Сертификаты не найдены", @"Не обнаружены контейнеры с сертификатами") forKey : NSLocalizedDescriptionKey];
+            
+            NSError* error = [[NSError alloc] initWithDomain:gCreateFileErrorDomain code:1 userInfo: desc];
+            
+            onErrorBlock(error);
+            return;
+        }
+        [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding] withCert: gCerts[0] withPin: @"12345678" withTSP: @"http://testca.cryptopro.ru/tsp/tsp.srf" successCallback: onSuccessBlock errorCallback: onErrorBlock];
    };
     
     onSuccessBlock = ^(NSString* signature) {
@@ -189,16 +194,15 @@ void lslr(const char * path)
     
     onFinal = ^() {
         if (gCerts) {
-            NSArray* certs = gCerts;
+            [Cades closeCertificates:gCerts successCallback:^(){} errorCallback:onErrorBlock];
             gCerts = nil;
-            [Cades closeCertificates:certs successCallback:^(){} errorCallback:onErrorBlock];
         }
         [NfcWorker stopNfcSessionWithSuccessCallback: ^(){}];
     };
     
     [self startCallbackForNfcOtBtTokenWithSucessCallback: ^() {
         [Cades getCertificatesWithSuccessCallback: signBlock errorCallback:onErrorBlock ]
-        ;} errorCallback: ^(){}];
+        ;} errorCallback: onErrorBlock];
     
 }
 

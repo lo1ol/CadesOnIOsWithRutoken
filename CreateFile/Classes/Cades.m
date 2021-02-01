@@ -40,7 +40,8 @@
             [wrapped_certs addObject: [[Certificate alloc] initWithRawCert: certs[i]]];
         }
         
-        free(certs);
+        if (count != 0)
+            free(certs);
         
         dispatch_async(dispatch_get_main_queue(), ^() {
             successCallback(wrapped_certs);

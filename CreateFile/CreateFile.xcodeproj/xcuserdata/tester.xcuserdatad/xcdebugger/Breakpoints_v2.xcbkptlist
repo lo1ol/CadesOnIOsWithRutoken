@@ -14,8 +14,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-createTestFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "-launchPane"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "Classes/Cades.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "+closeCertificates:successCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-createTestFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,8 +254,8 @@
             filePath = "Classes/Cades.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "+getCertificatesWithSuccessCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             filePath = "Classes/Cades.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "+getCertificatesWithSuccessCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +286,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-createTestFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -302,8 +302,8 @@
             filePath = "Classes/Cades.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "+signData:withCert:withPin:withTSP:successCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,8 +558,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-startCallbackForNfcOtBtTokenWithSucessCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -574,9 +574,9 @@
             filePath = "Classes/NfcWorker.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "+startNfcSessionWithNfcErrorCallback:sucessCallback:errorCallback:"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "+startNfcSessionWithSucessCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -590,8 +590,8 @@
             filePath = "Classes/NfcWorker.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "+waitForTokenWithStopFlag:withLock:successCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
@@ -599,16 +599,224 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3AB685C7-B2FE-4F84-BED2-69B95556B457"
+            uuid = "F75F11CB-1BF5-471C-93EA-3350653CD406"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/EnumReaders.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "+getReaderList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1BC3DF45-21BF-44A9-B3A9-766A25AC83CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/NfcWorker.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "+waitForTokenWithStopFlag:withLock:successCallback:errorCallback:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E321D6BD-4284-42D4-9399-94BF7328636F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/NfcWorker.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "+startNfcSessionWithSucessCallback:errorCallback:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "563AF80A-575C-42DE-9EF9-F149F8ED6F76"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/NfcWorker.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "+startNfcSessionWithSucessCallback:errorCallback:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "486EC65D-AEF4-4B9D-BF03-78202F89EEF6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/NfcWorker.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "+waitForTokenWithStopFlag:withLock:successCallback:errorCallback:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "486EC65D-AEF4-4B9D-BF03-78202F89EEF6 - f9794d349570e21f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__77+[NfcWorker waitForTokenWithStopFlag:withLock:successCallback:errorCallback:]_block_invoke"
+                  moduleName = "CreateFile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/NfcWorker.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  uuid = "486EC65D-AEF4-4B9D-BF03-78202F89EEF6 - bc41b6dd7eaa3ab6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__77+[NfcWorker waitForTokenWithStopFlag:withLock:successCallback:errorCallback:]_block_invoke.2"
+                  moduleName = "CreateFile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/NfcWorker.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE1B2D00-C411-42CC-A855-445CB9F62AC8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/NfcWorker.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "+waitForTokenWithStopFlag:withLock:successCallback:errorCallback:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FE1B2D00-C411-42CC-A855-445CB9F62AC8 - f9794d349570e178"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__77+[NfcWorker waitForTokenWithStopFlag:withLock:successCallback:errorCallback:]_block_invoke"
+                  moduleName = "CreateFile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/NfcWorker.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "FE1B2D00-C411-42CC-A855-445CB9F62AC8 - bc41b6dd7ea99c3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__77+[NfcWorker waitForTokenWithStopFlag:withLock:successCallback:errorCallback:]_block_invoke_2"
+                  moduleName = "CreateFile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/NfcWorker.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A446183-2656-405F-9828-8D3424FCCB7F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/NfcWorker.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "+startNfcSessionWithSucessCallback:errorCallback:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9A446183-2656-405F-9828-8D3424FCCB7F - a58b84e0e31fbd83"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__61+[NfcWorker startNfcSessionWithSucessCallback:errorCallback:]_block_invoke_3"
+                  moduleName = "CreateFile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/NfcWorker.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "9A446183-2656-405F-9828-8D3424FCCB7F - a58b84e0e31ebde5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__61+[NfcWorker startNfcSessionWithSucessCallback:errorCallback:]_block_invoke_4"
+                  moduleName = "CreateFile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/NfcWorker.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AC6FCF9-745C-4D62-A360-6D235DCD871E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/CreateFileViewController.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-startCallbackForNfcOtBtTokenWithSucessCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
