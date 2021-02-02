@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "+[CProReader installCerts]:EnumReaders.mm">
+         <PersistentStrings>
+            <PersistentString
+               value = "CSP_GetLastError()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__45-[CreateFileViewController startEnumReaders:]_block_invoke_3:CreateFileViewController.mm">
          <PersistentStrings>
             <PersistentString
@@ -12,14 +20,6 @@
       </ContextState>
       <ContextState
          contextName = "__77+[NfcWorker waitForTokenWithStopFlag:withLock:successCallback:errorCallback:]_block_invoke:NfcWorker.m">
-      </ContextState>
-      <ContextState
-         contextName = "+[CProReader installCerts]:EnumReaders.mm">
-         <PersistentStrings>
-            <PersistentString
-               value = "CSP_GetLastError()">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
