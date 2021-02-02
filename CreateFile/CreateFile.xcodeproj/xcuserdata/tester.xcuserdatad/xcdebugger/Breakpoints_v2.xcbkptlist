@@ -14,8 +14,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-createTestFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-launchPane"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -120,14 +120,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "88EACABC-3F93-4990-80E8-286B65865A4A"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "VerifyCertificate(pCert, CheckResult)"
             landmarkType = "9">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -206,25 +206,9 @@
             filePath = "Classes/Cades.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "+closeCertificates:successCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F879C5AA-273A-498E-BBC1-BA66DDDCCC8C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "-createTestFile"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "+closeCertificates:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -238,57 +222,9 @@
             filePath = "Classes/Cades.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "+getCertificatesWithSuccessCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "088EB2B4-01A6-418E-A4F2-CF16A0E6F33E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/Cades.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "+getCertificatesWithSuccessCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1A67B961-110C-450A-B8E6-432B4120241A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/Cades.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "+getCertificatesWithSuccessCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE6B0237-7CE4-4388-BF4D-889402CA58B5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-createTestFile"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "+getReaderCertificates:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -302,25 +238,9 @@
             filePath = "Classes/Cades.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "+signData:withCert:withPin:withTSP:successCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C9E3157D-91D5-4C3B-BF71-B065DC93B7D9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/Cades.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "+onError:callback:"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "+signData:withCert:withPin:withTSP:signature:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -334,8 +254,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -350,8 +270,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -366,9 +286,9 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "get_certs(certs, count)"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "get_reader_certs(certs, count)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -382,9 +302,9 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "get_certs(certs, count)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "get_reader_certs(certs, count)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -398,9 +318,9 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "get_certs(certs, count)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "get_reader_certs(certs, count)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -414,9 +334,9 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "get_certs(certs, count)"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "get_reader_certs(certs, count)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -430,9 +350,9 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "get_certs(certs, count)"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "get_reader_certs(certs, count)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -446,8 +366,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -462,8 +382,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "VerifyCertificate(pCert, CheckResult)"
             landmarkType = "9">
          </BreakpointContent>
@@ -478,8 +398,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "VerifyCertificate(pCert, CheckResult)"
             landmarkType = "9">
          </BreakpointContent>
@@ -494,8 +414,8 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
          </BreakpointContent>
@@ -510,9 +430,9 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
-            landmarkName = "get_certs(certs, count)"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "get_reader_certs(certs, count)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -526,9 +446,9 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "get_certs(certs, count)"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "get_reader_certs(certs, count)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -542,26 +462,10 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
             landmarkName = "do_low_sign(pin, msg, msg_size, _context, tsp, signature)"
             landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "182DD3B6-943B-4C89-8E42-72FEA4BDDABF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-startCallbackForNfcOrBtTokenWithSucessCallback:errorCallback:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -593,22 +497,6 @@
             startingLineNumber = "94"
             endingLineNumber = "94"
             landmarkName = "+getReaderList"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4AC6FCF9-745C-4D62-A360-6D235DCD871E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-startCallbackForNfcOrBtTokenWithSucessCallback:errorCallback:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -695,22 +583,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C12AB4D6-934A-4BBB-AFB3-8496126EB062"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-startCallbackForNfcOrBtTokenWithSucessCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "AF75F3E5-7C85-4FC7-8C20-265A5A6546CD"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -743,54 +615,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8AFAC7A1-7E41-49E6-BDD4-53AB59CED868"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/RutokenNfcWorker.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "+waitForTokenWithStopFlag:withLock:successCallback:errorCallback:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8AFAC7A1-7E41-49E6-BDD4-53AB59CED868 - d1c82f5f88005e9f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__84+[RutokenNfcWorker waitForTokenWithStopFlag:withLock:successCallback:errorCallback:]_block_invoke"
-                  moduleName = "CreateFile"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/RutokenNfcWorker.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "396">
-               </Location>
-               <Location
-                  uuid = "8AFAC7A1-7E41-49E6-BDD4-53AB59CED868 - 4db2016ef5b85cc0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__84+[RutokenNfcWorker waitForTokenWithStopFlag:withLock:successCallback:errorCallback:]_block_invoke_2"
-                  moduleName = "CreateFile"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/RutokenNfcWorker.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D37603EE-D94D-493C-B7EE-75B89D6C0969"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -807,150 +631,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3B631FC9-6B4F-4815-9A9F-3E568F36F316"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-startEnumReaders:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "3B631FC9-6B4F-4815-9A9F-3E568F36F316 - f81f18209f143197"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CreateFileViewController startEnumReaders:]_block_invoke"
-                  moduleName = "CreateFile"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/CreateFileViewController.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "3B631FC9-6B4F-4815-9A9F-3E568F36F316 - 76fad3c51682f3d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CreateFileViewController startEnumReaders:]_block_invoke_2"
-                  moduleName = "CreateFile"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/CreateFileViewController.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "76C2981C-C9FF-43E3-A406-A08502A7CF52"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/RutokenNfcWorker.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "+waitForTokenWithStopFlag:withLock:successCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B2E9309A-8335-4495-AC45-C084D2A9D9CA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/RutokenNfcWorker.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "+startNfcSessionWithSucessCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8EC6B867-AF6C-4BC4-BAD1-972D7C7F1761"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-startEnumReaders:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "30000080-0F56-4A04-B4E3-3DC6DD60B49A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-startEnumReaders:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "30000080-0F56-4A04-B4E3-3DC6DD60B49A - 76fad3c51682f0cf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CreateFileViewController startEnumReaders:]_block_invoke_3"
-                  moduleName = "CreateFile"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/CreateFileViewController.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  uuid = "30000080-0F56-4A04-B4E3-3DC6DD60B49A - 76fad3c51682f0c9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CreateFileViewController startEnumReaders:]_block_invoke_4"
-                  moduleName = "CreateFile"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/CreateFileViewController.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "439C438C-F587-4B55-A7A5-93B2BC21CCCE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -958,8 +638,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-createTestFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -974,9 +654,41 @@
             filePath = "Classes/SignFile.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "get_certs(certs, count)"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "get_reader_certs(certs, count)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "796DDEE3-982F-4790-94DD-0379BCEE46C7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/SignFile.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "get_reader_certs(certs, count)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF09DD72-890F-446B-A79B-92A918A42507"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/SignFile.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "VerifyCertificate(pCert, CheckResult)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

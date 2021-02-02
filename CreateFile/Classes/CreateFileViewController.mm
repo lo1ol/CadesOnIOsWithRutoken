@@ -35,62 +35,61 @@ static NSString* const gCreateFileErrorDomain = @"ru.rutoken.testappcreatefile";
 	[self launchPane];
 }
 
-static bool nfcSelected;
--(void) startCallbackForNfcOrBtTokenWithSucessCallback: (void (^)(void)) successCallback errorCallback: (void (^)(NSError* error, bool nfcWorks)) errorCallback
+-(void)startCallbackWithNfcOrNone: (void(^)(void)) callback
 {
     UIAlertController * alert = [UIAlertController
-                                alertControllerWithTitle:@"Тип Рутокена"
-                                message:@"Выберете тип Вашего Рутокена:"
+                                alertControllerWithTitle:@"Распознавание Рутокен NFC"
+                                message:@"Включить NFC для распознавания Рутокен NFC?"
                                 preferredStyle:UIAlertControllerStyleActionSheet];
 
-   void (^nfcHandler)(UIAlertAction* action) =
+    void (^nfcHandler)(UIAlertAction* action) =
        ^void(UIAlertAction* action) {
-           nfcSelected = true;
-           [RutokenNfcWorker startNfcSessionWithSucessCallback: successCallback
-                                          errorCallback: errorCallback
-        ];
+           __block NSLock* lock = [NSLock new];
+           __block bool stopFlag = false;
+           
+           startNFC(^void(NSError* error){
+                [lock lock];
+                stopFlag = true;
+                [lock unlock];
+                        
+                NSLog(@"%@", error.localizedDescription);
+            });
+           
+           [RutokenNfcWorker waitForTokenWithStopFlag: &stopFlag lock: lock];
+           [lock lock];
+           if (stopFlag) {
+               [lock unlock];
+               return;
+           }
+           [lock unlock];
+           
+           callback();
+           stopNFC();
        };
    
-   UIAlertAction* nfcButton = [UIAlertAction
-                               actionWithTitle:@"NFC Рутокен"
+    UIAlertAction* nfcButton = [UIAlertAction
+                               actionWithTitle:@"Да"
                                style:UIAlertActionStyleDefault
                                handler:nfcHandler];
 
-   void (^btHandler)(UIAlertAction * action) =
+    void (^nonNfcHandler)(UIAlertAction * action) =
        ^void(UIAlertAction* action) {
-           nfcSelected = false;
-           successCallback();
+           callback();
        };
    
-   UIAlertAction* btButton = [UIAlertAction
-                              actionWithTitle:@"BT Рутокен"
+    UIAlertAction* nonNfcButton = [UIAlertAction
+                              actionWithTitle:@"Нет"
                               style:UIAlertActionStyleDefault
-                              handler:btHandler];
+                              handler:nonNfcHandler];
    
-   [alert addAction:nfcButton];
-   [alert addAction:btButton];
+    [alert addAction:nfcButton];
+    [alert addAction:nonNfcButton];
 
-   [self presentViewController:alert animated:YES completion:nil];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 -(IBAction)startEnumReaders:(id)sender {
-    [self
-     startCallbackForNfcOrBtTokenWithSucessCallback:
-        ^() {
-            [CProReader getReaderList];
-            [RutokenNfcWorker stopNfcSessionWithSuccessCallback: ^(){}];
-        
-        }
-     
-     errorCallback:
-        ^(NSError* error, bool nfcWorks) {
-            if (nfcWorks){
-                [RutokenNfcWorker stopNfcSessionWithSuccessCallback: ^(){}];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Readers" message: [NSString stringWithFormat: @"Can't get readers list. Error code: 0x%lx", error.code]delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                [alert show];
-            }
-        }
-     ];
+    [self startCallbackWithNfcOrNone: ^(){ [CProReader getReaderList]; }];
 }
 
 -(void) launchPane
@@ -155,94 +154,153 @@ void lslr(const char * path)
 	closedir(dp);
 }
 
+-(void)startCallbackWithNfcOrNoneWithPinAsking: (void(^)(NSString* pinCode)) callback
+{
+    UIAlertController * alert = [UIAlertController
+                                alertControllerWithTitle:@"Распознавание Рутокен NFC"
+                                message:@"Включить NFC для распознавания Рутокен NFC?"
+                                preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    __block UIAlertController* pinCodeAlert = [UIAlertController alertControllerWithTitle:@"Пин-код"
+                                                               message:@"Введите ПИН-код"
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+
+    void(^nfcHeandlerAfterAskPinCode)(UIAlertAction * action) =
+    ^(UIAlertAction * action) {
+        __block NSLock* lock = [NSLock new];
+        __block bool stopFlag = false;
+        
+        startNFC(^void(NSError* error){
+            [lock lock];
+            stopFlag = true;
+            [lock unlock];
+
+            NSLog(@"%@", error.localizedDescription);
+        });
+
+        [RutokenNfcWorker waitForTokenWithStopFlag: &stopFlag lock: lock];
+        [lock lock];
+        if (stopFlag) {
+            [lock unlock];
+            return;
+        }
+        [lock unlock];
+
+        callback(pinCodeAlert.textFields[0].text);
+        stopNFC();
+    };
+    
+    void (^nfcHandler)(UIAlertAction* action) =
+       ^void(UIAlertAction* action) {
+           UIAlertAction* okAction =
+           [UIAlertAction actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                  handler:nfcHeandlerAfterAskPinCode];
+           
+           [pinCodeAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+               textField.secureTextEntry = true;
+           }];
+           [pinCodeAlert addAction:okAction];
+           [self presentViewController:pinCodeAlert animated:YES completion:nil];
+       };
+   
+    UIAlertAction* nfcButton = [UIAlertAction
+                               actionWithTitle:@"Да"
+                               style:UIAlertActionStyleDefault
+                               handler:nfcHandler];
+
+    void (^nonNfcHandler)(UIAlertAction * action) =
+       ^void(UIAlertAction* action) {
+           callback(nil);
+       };
+   
+    UIAlertAction* nonNfcButton = [UIAlertAction
+                              actionWithTitle:@"Нет"
+                              style:UIAlertActionStyleDefault
+                              handler:nonNfcHandler];
+   
+    [alert addAction:nfcButton];
+    [alert addAction:nonNfcButton];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 // Display dialog box
 - (void) createTestFile
 {
-    self.content = @"Test123";
-    __block NSArray* gCerts;
+    __block void (^callback)(NSString*) = ^(NSString* pin) {
+        UIAlertView *alert;
+        NSString* res = nil;
+        self.content = @"Test123";
+        NSArray* certs = nil;
+        DWORD rv = ERROR_SUCCESS;
+        
+        if (pin)
+            rv = [Cades getReaderCertificates:&certs];
+        else
+            rv = [Cades getStoreCertificates:&certs];
+        
+        if (rv != ERROR_SUCCESS)
+            goto cades_error;
     
-    __block void (^onFinal)(bool);
-    __block void (^onErrorBlock)(NSError*, bool);
-    __block void (^onSuccessBlock)(NSString*);
-    __block void (^signBlock)(NSArray*);
-    __block void (^getCertBlock)();
-    
-    getCertBlock = ^() {
-        [Cades getCertificatesWithSuccessCallback: signBlock
-                                    errorCallback: ^(NSError* error){onErrorBlock(error, nfcSelected);} ];
-    };
-    
-    signBlock = ^(NSArray* certs) {
-        gCerts = certs;
-        if (gCerts.count == 0) {
-            NSDictionary* desc = [NSDictionary dictionaryWithObject : NSLocalizedString(@"Сертификаты не найдены", @"Не обнаружены контейнеры с сертификатами") forKey : NSLocalizedDescriptionKey];
-            
-            NSError* error = [[NSError alloc] initWithDomain:gCreateFileErrorDomain code:1 userInfo: desc];
-            
-            onErrorBlock(error, nfcSelected);
-            return;
+        if (certs.count == 0) {
+            goto certs_error;
         }
-        [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding]
-               withCert: gCerts[0] withPin: @"12345678"
+        
+        rv = [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding]
+               withCert: certs[0] withPin: pin
                 withTSP: @"http://testca.cryptopro.ru/tsp/tsp.srf"
-        successCallback: onSuccessBlock
-          errorCallback: ^(NSError* error){onErrorBlock(error, nfcSelected);}];
-   };
-    
-    onSuccessBlock = ^(NSString* signature) {
-        self.signature = signature;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign" message:@"everything is ok." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+              signature: &res ];
+        signature = res;
+        
+        if (rv != ERROR_SUCCESS)
+            goto cades_error;
+        
+        goto sucess;
+
+cades_error:
+        alert = [[UIAlertView alloc] initWithTitle:@"Sign" message: [NSString stringWithFormat: @"sign failed. Error code: 0x%x", rv] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        goto finish;
+        
+certs_error:
+        alert = [[UIAlertView alloc] initWithTitle:@"Sign" message: [NSString stringWithFormat: @"No certs found", rv] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        goto finish;
+        
+sucess:
+        alert = [[UIAlertView alloc] initWithTitle:@"Sign" message:@"everything is ok." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        goto finish;
+        
+finish:
         [alert show];
-        
-        onFinal(nfcSelected);
-        
+        if (certs)
+            [Cades closeCertificates:certs];
     };
     
-    onErrorBlock = ^(NSError* error, bool nfcWorks) {
-        if (!nfcSelected || nfcWorks) {
-           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign" message: [NSString stringWithFormat: @"sign failed. Error code: 0x%lx", error.code] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-           [alert show];
-        }
-       
-        onFinal(nfcWorks);
-   };
-    
-    onFinal = ^(bool nfcWorks) {
-        if (gCerts) {
-            [Cades closeCertificates:gCerts
-                     successCallback:^(){}
-                       errorCallback:^(NSError* error) {onErrorBlock(error, true);}];
-            gCerts = nil;
-        }
-        
-        if (nfcWorks)
-            [RutokenNfcWorker stopNfcSessionWithSuccessCallback: ^(){}];
-    };
-    
-    [self startCallbackForNfcOrBtTokenWithSucessCallback: getCertBlock errorCallback: onErrorBlock];
+    [self startCallbackWithNfcOrNoneWithPinAsking: callback];
     
 }
 
 - (void) readTestFile
 {
-    void (^onErrorBlock)(NSError*) = ^(NSError* error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message: [NSString stringWithFormat: @"signature was not verified. Error code: 0x%lx", error.code]delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-    };
-    
-    void (^onSuccessBlock)(NSInteger) = ^(NSInteger status) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message: [NSString stringWithFormat: @"signature verification status is 0x%lx", status] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-    };
-    
     if (!signature) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message: @"no signature found. Create signature firstly" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [alert show];
         return;
     }
     
-    [Cades verifySignature: signature successCallback: onSuccessBlock errorCallback: onErrorBlock];
+    NSInteger status;
+    DWORD rv =[Cades verifySignature: signature status:status];
+    
+    if (rv != ERROR_SUCCESS) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message: [NSString stringWithFormat: @"signature was not verified. Error code: 0x%x", rv]delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    } else if (status == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message: @"Signature is valid" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Verify" message: [NSString stringWithFormat: @"signature is not valid. status: 0x%lx", (long) status] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    }
 	
 }
 

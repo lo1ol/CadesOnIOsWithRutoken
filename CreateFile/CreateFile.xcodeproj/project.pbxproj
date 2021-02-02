@@ -50,7 +50,6 @@
 		302DBCA4259B667B007E2AF5 /* RtPcsc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 302DBCA1259B666B007E2AF5 /* RtPcsc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		302DBCA5259B6751007E2AF5 /* libcsp_scards.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAE42595F5590090DC62 /* libcsp_scards.o */; };
 		302DBCB3259B731D007E2AF5 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302DBCB2259B731D007E2AF5 /* CoreNFC.framework */; };
-		302DBFA325B04CA0007E2AF5 /* CadesError.m in Sources */ = {isa = PBXBuildFile; fileRef = 302DBFA225B04CA0007E2AF5 /* CadesError.m */; };
 		3097BADF2595F5270090DC62 /* Certificate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097BADB2595F5270090DC62 /* Certificate.m */; };
 		3097BAE02595F5270090DC62 /* Cades.m in Sources */ = {isa = PBXBuildFile; fileRef = 3097BADE2595F5270090DC62 /* Cades.m */; };
 		3097BAEA2595F5BB0090DC62 /* CPROPKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAE92595F5BB0090DC62 /* CPROPKI.framework */; };
@@ -124,8 +123,6 @@
 		302C939F25C4435600924DF1 /* RutokenNfcWorker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RutokenNfcWorker.m; sourceTree = "<group>"; };
 		302DBCA1259B666B007E2AF5 /* RtPcsc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RtPcsc.framework; path = ../RtPcsc.framework; sourceTree = "<group>"; };
 		302DBCB2259B731D007E2AF5 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
-		302DBFA125B04CA0007E2AF5 /* CadesError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadesError.h; sourceTree = "<group>"; };
-		302DBFA225B04CA0007E2AF5 /* CadesError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadesError.m; sourceTree = "<group>"; };
 		307154F425C1CAFB00B78E89 /* libtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtest.a; path = ../libtest.a; sourceTree = "<group>"; };
 		3097BADB2595F5270090DC62 /* Certificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Certificate.m; sourceTree = "<group>"; };
 		3097BADC2595F5270090DC62 /* Cades.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cades.h; sourceTree = "<group>"; };
@@ -174,8 +171,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				302DBFA125B04CA0007E2AF5 /* CadesError.h */,
-				302DBFA225B04CA0007E2AF5 /* CadesError.m */,
 				3097BADC2595F5270090DC62 /* Cades.h */,
 				3097BADE2595F5270090DC62 /* Cades.m */,
 				3097BADD2595F5270090DC62 /* Certificate.h */,
@@ -419,7 +414,6 @@
 				3097BAE02595F5270090DC62 /* Cades.m in Sources */,
 				1D3623260D0F684500981E51 /* CreateFileAppDelegate.mm in Sources */,
 				28C286E10D94DF7D0034E888 /* CreateFileViewController.mm in Sources */,
-				302DBFA325B04CA0007E2AF5 /* CadesError.m in Sources */,
 				4152198E12B79AA200E4CD7A /* SignFile.cpp in Sources */,
 				2A84C3161A35E9E700649856 /* EnumReaders.mm in Sources */,
 			);

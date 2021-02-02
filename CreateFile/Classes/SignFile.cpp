@@ -13,14 +13,75 @@
 #include "SignFile.h"
 
 extern bool USE_CACHE_DIR;
-bool USE_CACHE_DIR = false;
+bool USE_CACHE_DIR = true;
 static const int kGostProvType = PROV_GOST_2012_256;
 
-
-
-DWORD get_certs(PCCERT_CONTEXT** certs, size_t* count)
+DWORD get_store_certs(PCCERT_CONTEXT** certs, size_t* count)
 {
+    PCCERT_CONTEXT userCert = NULL;
+    CSP_BOOL bResult = FALSE;
     DWORD            dwSize = 0;
+    CRYPT_KEY_PROV_INFO *pProvInfo = NULL;
+    DWORD rv = ERROR_SUCCESS;
+    std::vector<PCCERT_CONTEXT> certs_vector = std::vector<PCCERT_CONTEXT>();
+    
+    HCERTSTORE hCertStore = CertOpenSystemStore(0, "My");
+    if(!hCertStore){
+        rv = CSP_GetLastError();
+        std::cerr << "CertOpenSystemStore failed." << std::endl;
+        goto exit;
+    }
+
+    while(true){
+        userCert = CertFindCertificateInStore(hCertStore, X509_ASN_ENCODING | PKCS_7_ASN_ENCODING, 0, CERT_FIND_ANY, 0, userCert);
+        if(!userCert){
+            break;
+        }
+        bResult = CertGetCertificateContextProperty(userCert,
+                    CERT_KEY_PROV_INFO_PROP_ID, NULL, &dwSize);
+        if (bResult) {
+            free(pProvInfo);
+            pProvInfo = (CRYPT_KEY_PROV_INFO *)malloc(dwSize);
+            if (pProvInfo) {
+                bResult = CertGetCertificateContextProperty(userCert, CERT_KEY_PROV_INFO_PROP_ID, pProvInfo, &dwSize);
+                certs_vector.push_back(CertDuplicateCertificateContext(userCert));
+            }
+        }
+    }
+    
+    free(pProvInfo);
+    
+    if (!certs_vector.size()) {
+        std::cerr << "No certs found" << std::endl;
+        rv = ERROR_NO_MORE_ITEMS;
+        goto close_cert_store;
+    }
+    
+    *certs = (PCCERT_CONTEXT*) malloc(sizeof(certs_vector[0])* certs_vector.size());
+    if (!certs) {
+        rv = ERROR_CANNOT_COPY;
+        goto close_cert_store;
+    }
+    
+    memcpy(*certs, certs_vector.data(), sizeof(certs_vector[0])*certs_vector.size());
+    *count=certs_vector.size();
+    
+close_cert_store:
+    // Закрываем хранилище
+    if (!CertCloseStore(hCertStore, 0)) {
+        free(*certs);
+        *certs = nullptr;
+        std::cout << "Certificate store handle was not closed." << std::endl;
+        rv = CSP_GetLastError();
+    }
+    
+exit:
+    return rv;
+}
+
+DWORD get_reader_certs(PCCERT_CONTEXT** certs, size_t* count)
+{
+    DWORD dwSize = 0;
     *count = 0;
     *certs = NULL;
     CRYPT_KEY_PROV_INFO *pProvInfo = NULL;
@@ -388,9 +449,6 @@ DWORD do_low_sign(const char* pin, const uint8_t* msg, size_t msg_size, const PC
         rv = CSP_GetLastError();
         goto free_prov_info;
     }
-    
-    DWORD res;
-    VerifyCertificate(context, &res);
     
     for (i = 0; i < pChainContext->rgpChain[0]->cElement-1; ++i)
     {
