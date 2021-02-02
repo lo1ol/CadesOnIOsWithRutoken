@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "__45-[CreateFileViewController startEnumReaders:]_block_invoke_3:CreateFileViewController.mm">
+         <PersistentStrings>
+            <PersistentString
+               value = "error.domain">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__77+[NfcWorker waitForTokenWithStopFlag:withLock:successCallback:errorCallback:]_block_invoke:NfcWorker.m">
+      </ContextState>
+      <ContextState
          contextName = "+[CProReader installCerts]:EnumReaders.mm">
          <PersistentStrings>
             <PersistentString

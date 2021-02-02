@@ -16,6 +16,8 @@ extern bool USE_CACHE_DIR;
 bool USE_CACHE_DIR = false;
 static const int kGostProvType = PROV_GOST_2012_256;
 
+
+
 DWORD get_certs(PCCERT_CONTEXT** certs, size_t* count)
 {
     DWORD            dwSize = 0;
@@ -23,7 +25,7 @@ DWORD get_certs(PCCERT_CONTEXT** certs, size_t* count)
     *certs = NULL;
     CRYPT_KEY_PROV_INFO *pProvInfo = NULL;
     DWORD rv = ERROR_SUCCESS;
-    HCRYPTPROV hProv;
+    HCRYPTPROV hProv = 0;
     std::vector<PCCERT_CONTEXT> certs_vector = std::vector<PCCERT_CONTEXT>();
     DWORD fParam = CRYPT_FIRST;
     DWORD cnt = 0;

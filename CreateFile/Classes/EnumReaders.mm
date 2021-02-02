@@ -1,5 +1,4 @@
 #include "EnumReaders.h"
-#include <rtpkcs11ecp/rtpkcs11.h>
 #import <RtPcsc/rtnfc.h>
 
 static const int kGostProvType = PROV_GOST_2012_256;

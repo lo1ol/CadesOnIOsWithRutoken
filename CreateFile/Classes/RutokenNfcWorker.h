@@ -9,10 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NfcWorker : NSObject
+@interface RutokenNfcWorker : NSObject
 
 +(void) waitForTokenWithStopFlag: (bool*) pStopFlag withLock: (NSLock *) lock successCallback:(void(^)(void)) successCallback errorCallback: (void(^)(NSError*)) errorCallback;
-+(void) startNfcSessionWithSucessCallback: (void(^)(void)) successCallback errorCallback: (void(^)(NSError*)) errorCallback;
++(void) startNfcSessionWithSucessCallback: (void(^)(void)) successCallback errorCallback: (void (^)(NSError* error, bool nfcWorks)) errorCallback;
 +(void) stopNfcSessionWithSuccessCallback:(void(^)(void)) successCallback;
 @end
 
