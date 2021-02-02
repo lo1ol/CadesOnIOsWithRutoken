@@ -39,9 +39,9 @@ static NSString* const gScardErrorDomain = @"ru.rutoken.scard";
             rv = SCardGetStatusChange(hContext, 500, &rgReaderStates, cReaders);
             if (rv != SCARD_S_SUCCESS) {
                 if (rv != SCARD_E_TIMEOUT)
-                    goto exit;
+                    goto close_context;
             } else if (rgReaderStates.dwEventState == SCARD_STATE_CHANGED) {
-                goto exit;
+                goto close_context;
             }
             
             [lock lock];
@@ -49,12 +49,13 @@ static NSString* const gScardErrorDomain = @"ru.rutoken.scard";
             [lock unlock];
             
             if (stopFlag)
-                goto exit;
+                goto close_context;
         }
         
+close_context:
         SCardCancel(hContext);
         
-exit:
+exit:        
         if (stopFlag)
             return;
         if (rv == SCARD_S_SUCCESS) {
