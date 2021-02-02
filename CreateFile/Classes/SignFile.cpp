@@ -389,9 +389,6 @@ DWORD do_low_sign(const char* pin, const uint8_t* msg, size_t msg_size, const PC
         goto free_prov_info;
     }
     
-    DWORD res;
-    VerifyCertificate(context, &res);
-    
     for (i = 0; i < pChainContext->rgpChain[0]->cElement-1; ++i)
     {
         certs.push_back(pChainContext->rgpChain[0]->rgpElement[i]->pCertContext);
