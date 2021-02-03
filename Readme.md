@@ -1,7 +1,7 @@
 # Пример формирования подписи в формате Cades X Long Type 1 на iOs устройствах с использованием Рутокен ЭЦП Bluetooth и Рутокен ЭЦП 3.0 NFC.
 
 ## Сборка
-1.Для сборки проекта загрузите в корень директории [фреймфорк CPROCSP.framework](https://www.cryptopro.ru/products/csp/downloads). Я использовал [КриптоПро CSP 5.0.11998 (K) RC6 (https://www.cryptopro.ru/sites/default/files/private/csp/50/11998/ios-uni.tgz).
+1. Для сборки проекта загрузите в корень директории [фреймфорк CPROCSP.framework](https://www.cryptopro.ru/products/csp/downloads). Я использовал [КриптоПро CSP 5.0.11998 (K) RC6 (https://www.cryptopro.ru/sites/default/files/private/csp/50/11998/ios-uni.tgz).
 2. Сконфигурируйте проект согласно файлам ReadMe.txt и Readers.txt (проект из репозитория почти полностью сконфигурирован для версии КриптоПро CSP 5.0.11998 (K) RC6).
 3. В процессе настройки вам потребуется установить RtPcsc.framework. Его можно взять из [Rutoken SDK](https://www.rutoken.ru/developers/sdk/) в директории **sdk/mobile/ios/pcsc/lib**. После подключения фреймворка перейдите во вкладку **Project settings->Targets->General->Frameworks, Libraries and Embedded content** и сделайте фрейворк RtPcsc.framework встраеваемым (Embed & Sign).
 4. Установите [фреймворк CPROPKI.framework](https://www.cryptopro.ru/products/cades/downloads) в корень директории и добавьте его в свой проект.
