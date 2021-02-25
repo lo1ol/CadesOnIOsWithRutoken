@@ -53,7 +53,7 @@ static NSString* const gScardErrorDomain = @"ru.rutoken.scard";
         }
         
 close_context:
-        SCardCancel(hContext);
+        SCardReleaseContext(hContext);
         
 exit:        
         if (stopFlag)

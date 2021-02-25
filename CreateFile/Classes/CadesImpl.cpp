@@ -10,7 +10,7 @@
 #include <vector>
 #include <CPROCSP/CPROCSP.h>
 #include <CPROPKI/cades.h>
-#include "SignFile.h"
+#include "CadesImpl.h"
 
 extern bool USE_CACHE_DIR;
 bool USE_CACHE_DIR = false;
@@ -240,7 +240,7 @@ exit:
     return rv;
 }
 
-static DWORD VerifyCertificate(PCCERT_CONTEXT pCert,DWORD *CheckResult)
+DWORD verify_cert(PCCERT_CONTEXT pCert, DWORD *CheckResult)
 {
     CERT_CHAIN_PARA ChainPara;
     PCCERT_CHAIN_CONTEXT Chain=NULL;
@@ -249,15 +249,12 @@ static DWORD VerifyCertificate(PCCERT_CONTEXT pCert,DWORD *CheckResult)
     ChainPara.RequestedUsage.dwType=USAGE_MATCH_TYPE_AND;
     ChainPara.RequestedUsage.Usage.cUsageIdentifier=0;
     ChainPara.RequestedUsage.Usage.rgpszUsageIdentifier=NULL;
-    //ChainPara.RequestedIssuancePolicy=NULL;
-    //ChainPara.fCheckRevocationFreshnessTime=FALSE;
-    //ChainPara.dwUrlRetrievalTimeout=0;
     
     if(!CertGetCertificateChain(
                                 NULL,
                                 pCert,
                                 NULL,
-                                NULL,//?
+                                NULL,
                                 &ChainPara,
                                 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT,
                                 NULL,

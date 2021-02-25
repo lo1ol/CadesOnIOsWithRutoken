@@ -222,8 +222,8 @@
             filePath = "Classes/CreateFileViewController.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "-createTestFile"
             landmarkType = "7">
          </BreakpointContent>
@@ -273,22 +273,6 @@
             startingLineNumber = "47"
             endingLineNumber = "47"
             landmarkName = "+getCertificatesWithSuccessCallback:errorCallback:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE6B0237-7CE4-4388-BF4D-889402CA58B5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-createTestFile"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -916,14 +900,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "30000080-0F56-4A04-B4E3-3DC6DD60B49A - 76fad3c51682f0cf"
+                  uuid = "30000080-0F56-4A04-B4E3-3DC6DD60B49A - 82cd2db11043fd84"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__45-[CreateFileViewController startEnumReaders:]_block_invoke_3"
                   moduleName = "CreateFile"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/CreateFileViewController.mm"
+                  urlString = "file:///Users/tester/Downloads/cades-on-ios-with-rutoken/CreateFile/Classes/CreateFileViewController.mm"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
@@ -931,14 +915,14 @@
                   offsetFromSymbolStart = "84">
                </Location>
                <Location
-                  uuid = "30000080-0F56-4A04-B4E3-3DC6DD60B49A - 76fad3c51682f0c9"
+                  uuid = "30000080-0F56-4A04-B4E3-3DC6DD60B49A - 82cd2db11043fd82"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__45-[CreateFileViewController startEnumReaders:]_block_invoke_4"
                   moduleName = "CreateFile"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tester/Downloads/ios-uni/CreateFile/Classes/CreateFileViewController.mm"
+                  urlString = "file:///Users/tester/Downloads/cades-on-ios-with-rutoken/CreateFile/Classes/CreateFileViewController.mm"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
@@ -946,22 +930,6 @@
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "439C438C-F587-4B55-A7A5-93B2BC21CCCE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Classes/CreateFileViewController.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "-createTestFile"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -978,6 +946,38 @@
             endingLineNumber = "64"
             landmarkName = "get_certs(certs, count)"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91D7A7DE-2516-404C-9220-867C98B862CF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/CreateFileViewController.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-createTestFile"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D24E6D1-0EC2-43B8-94C7-B00AEAF1B5F9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/CreateFileViewController.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-createTestFile"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

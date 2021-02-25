@@ -16,6 +16,7 @@
 +(void) signData : (NSData*) msg  withCert: (Certificate*) cert withPin: (NSString*) pin withTSP: (NSString*) tsp successCallback: (void (^)(NSString* signture)) successCallback errorCallback: (void(^)(NSError*)) errorCallback;
 +(void) verifySignature : (NSString*) signature successCallback: (void (^)(NSInteger verificationStatus)) successCallback errorCallback: (void(^)(NSError*)) errorCallback;
 +(void) closeCertificates : (NSArray*) certificates successCallback: (void (^)(void)) successCallback errorCallback: (void (^)(NSError*)) errorCallback;
++(void) verifyCertificate : (Certificate*) certificate successCallback: (void (^)(DWORD status)) successCallback errorCallback: (void (^)(NSError*)) errorCallback;
 
 @end
 

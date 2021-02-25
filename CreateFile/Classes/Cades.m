@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "Cades.h"
 #import "CadesError.h"
-#import "SignFile.h"
+#import "CadesImpl.h"
 
 
 @implementation Cades
@@ -103,6 +103,23 @@
         
         dispatch_async(dispatch_get_main_queue(), ^() {
             successCallback();
+        });
+    });
+}
+
++(void) verifyCertificate : (Certificate*) certificate successCallback: (void (^)(DWORD status)) successCallback errorCallback: (void (^)(NSError*)) errorCallback
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
+        DWORD status;
+        DWORD rv = [certificate verifyWithStatus: &status];
+        
+        if (rv != ERROR_SUCCESS) {
+            [self onErrorWithCode:rv callback:errorCallback];
+            return;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^() {
+            successCallback(status);
         });
     });
 }

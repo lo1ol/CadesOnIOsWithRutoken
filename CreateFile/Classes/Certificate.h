@@ -19,7 +19,8 @@
 @property (readonly) NSDate* notAfter;
 @property (readwrite) PCCERT_CONTEXT rawCert;
 
--(Certificate*) initWithRawCert:(PCCERT_CONTEXT)rawCert;
+-(Certificate*) initWithRawCert:(PCCERT_CONTEXT) rawCert;
+-(DWORD) verifyWithStatus:(DWORD *) checkResult;
 -(DWORD) close;
 
 @end

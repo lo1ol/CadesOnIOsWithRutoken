@@ -163,17 +163,19 @@ void lslr(const char * path)
     __block NSArray* gCerts;
     
     __block void (^onFinal)(bool);
-    __block void (^onErrorBlock)(NSError*, bool);
+    __block void (^onErrorBlock)(NSError*, bool nfcWorks);
     __block void (^onSuccessBlock)(NSString*);
-    __block void (^signBlock)(NSArray*);
+    __block void (^onCheckCertStatus)(DWORD);
+    __block void (^signBlock)(DWORD);
+    __block void (^verifyCertBlock)(NSArray*);
     __block void (^getCertBlock)();
     
     getCertBlock = ^() {
-        [Cades getCertificatesWithSuccessCallback: signBlock
+        [Cades getCertificatesWithSuccessCallback: verifyCertBlock
                                     errorCallback: ^(NSError* error){onErrorBlock(error, nfcSelected);} ];
     };
     
-    signBlock = ^(NSArray* certs) {
+    verifyCertBlock = ^(NSArray* certs) {
         gCerts = certs;
         if (gCerts.count == 0) {
             NSDictionary* desc = [NSDictionary dictionaryWithObject : NSLocalizedString(@"Сертификаты не найдены", @"Не обнаружены контейнеры с сертификатами") forKey : NSLocalizedDescriptionKey];
@@ -183,12 +185,29 @@ void lslr(const char * path)
             onErrorBlock(error, nfcSelected);
             return;
         }
+        
+        [Cades verifyCertificate:gCerts[0] successCallback:signBlock errorCallback:^(NSError* error){onErrorBlock(error, nfcSelected);}];
+    };
+    
+    signBlock = ^(DWORD status) {
+        if (status != CERT_TRUST_NO_ERROR)
+            onCheckCertStatus(status);
+            return;
         [Cades signData: [content dataUsingEncoding:NSUTF8StringEncoding]
                withCert: gCerts[0] withPin: @"12345678"
                 withTSP: @"http://testca.cryptopro.ru/tsp/tsp.srf"
         successCallback: onSuccessBlock
           errorCallback: ^(NSError* error){onErrorBlock(error, nfcSelected);}];
    };
+    
+    onCheckCertStatus = ^(DWORD status) {
+        self.signature = signature;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign" message:[NSString stringWithFormat: @"Certificate verification is failed. Error code: 0x%x", status] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+        
+        onFinal(nfcSelected);
+        
+    };
     
     onSuccessBlock = ^(NSString* signature) {
         self.signature = signature;

@@ -17,6 +17,7 @@ extern "C" {
 #endif
 
 DWORD get_certs(PCCERT_CONTEXT** certs, size_t* count);
+DWORD verify_cert(PCCERT_CONTEXT pCert, DWORD *CheckResult);
 DWORD do_low_sign(const char* pin, const uint8_t* msg, size_t msg_size, const PCCERT_CONTEXT context, const char* tsp, char** signature);
 DWORD do_low_verify(const char* signature, DWORD* verificationStatus);
 

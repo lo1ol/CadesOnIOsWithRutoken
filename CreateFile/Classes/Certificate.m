@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Certificate.h"
+#import "CadesImpl.h"
 
 #define MY_STRING_TYPE (CERT_OID_NAME_STR)
 
@@ -108,4 +109,8 @@ NSDate* FileTimeToDate (FILETIME* ft)
     return ERROR_SUCCESS;
 }
 
+-(DWORD) verifyWithStatus:(DWORD *) checkResult;
+{
+    return verify_cert(self.rawCert, checkResult);
+}
 @end

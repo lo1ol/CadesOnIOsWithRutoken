@@ -57,7 +57,7 @@
 		3097BAEF2595F6320090DC62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAEE2595F6320090DC62 /* Security.framework */; };
 		3097BAF22595F6A00090DC62 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3097BAF12595F6A00090DC62 /* libxml2.tbd */; };
 		4112BC1215FA2AD700F7DD47 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4112BC1115FA2AD700F7DD47 /* ExternalAccessory.framework */; };
-		4152198E12B79AA200E4CD7A /* SignFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4152198D12B79AA200E4CD7A /* SignFile.cpp */; };
+		4152198E12B79AA200E4CD7A /* CadesImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4152198D12B79AA200E4CD7A /* CadesImpl.cpp */; };
 		4152199012B79B8600E4CD7A /* CreateFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4152198F12B79B8600E4CD7A /* CreateFileViewController.xib */; };
 		4152199A12B79CC800E4CD7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4152199912B79CC800E4CD7A /* libiconv.dylib */; };
 		41FBF20E132290760038C564 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41FBF20D132290760038C564 /* libz.dylib */; };
@@ -138,8 +138,8 @@
 		3097BAF12595F6A00090DC62 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		3097BAFD25960C270090DC62 /* CreateFile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CreateFile.entitlements; sourceTree = "<group>"; };
 		4112BC1115FA2AD700F7DD47 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
-		4152198C12B79AA200E4CD7A /* SignFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignFile.h; sourceTree = "<group>"; };
-		4152198D12B79AA200E4CD7A /* SignFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SignFile.cpp; sourceTree = "<group>"; };
+		4152198C12B79AA200E4CD7A /* CadesImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadesImpl.h; sourceTree = "<group>"; };
+		4152198D12B79AA200E4CD7A /* CadesImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CadesImpl.cpp; sourceTree = "<group>"; };
 		4152198F12B79B8600E4CD7A /* CreateFileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateFileViewController.xib; sourceTree = "<group>"; };
 		4152199912B79CC800E4CD7A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		41FBF20D132290760038C564 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -186,8 +186,8 @@
 				28C286E00D94DF7D0034E888 /* CreateFileViewController.mm */,
 				1D3623240D0F684500981E51 /* CreateFileAppDelegate.h */,
 				1D3623250D0F684500981E51 /* CreateFileAppDelegate.mm */,
-				4152198C12B79AA200E4CD7A /* SignFile.h */,
-				4152198D12B79AA200E4CD7A /* SignFile.cpp */,
+				4152198C12B79AA200E4CD7A /* CadesImpl.h */,
+				4152198D12B79AA200E4CD7A /* CadesImpl.cpp */,
 				302C939E25C4435600924DF1 /* RutokenNfcWorker.h */,
 				302C939F25C4435600924DF1 /* RutokenNfcWorker.m */,
 			);
@@ -420,7 +420,7 @@
 				1D3623260D0F684500981E51 /* CreateFileAppDelegate.mm in Sources */,
 				28C286E10D94DF7D0034E888 /* CreateFileViewController.mm in Sources */,
 				302DBFA325B04CA0007E2AF5 /* CadesError.m in Sources */,
-				4152198E12B79AA200E4CD7A /* SignFile.cpp in Sources */,
+				4152198E12B79AA200E4CD7A /* CadesImpl.cpp in Sources */,
 				2A84C3161A35E9E700649856 /* EnumReaders.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
