@@ -123,4 +123,21 @@
         });
     });
 }
+
++(void) addCACert : (NSData*) cert_body successCallback: (void (^)(void)) successCallback errorCallback: (void (^)(NSError*)) errorCallback
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
+
+        DWORD rv = addCACert(cert_body.bytes, cert_body.length);
+        
+        if (rv != ERROR_SUCCESS) {
+            [Cades onErrorWithCode: rv callback: errorCallback];
+            return;
+        }
+    
+        dispatch_async(dispatch_get_main_queue(), ^() {
+            successCallback();
+        });
+    });
+}
 @end

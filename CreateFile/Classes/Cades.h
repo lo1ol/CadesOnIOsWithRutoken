@@ -17,6 +17,7 @@
 +(void) verifySignature : (NSString*) signature successCallback: (void (^)(NSInteger verificationStatus)) successCallback errorCallback: (void(^)(NSError*)) errorCallback;
 +(void) closeCertificates : (NSArray*) certificates successCallback: (void (^)(void)) successCallback errorCallback: (void (^)(NSError*)) errorCallback;
 +(void) verifyCertificate : (Certificate*) certificate successCallback: (void (^)(DWORD status)) successCallback errorCallback: (void (^)(NSError*)) errorCallback;
++(void) addCACert : (NSData*) cert_body successCallback: (void (^)(void)) successCallback errorCallback: (void (^)(NSError*)) errorCallback;
 
 @end
 

@@ -504,3 +504,40 @@ exit:
     return rv;
 }
 
+DWORD addCACert(const uint8_t* cert_body, DWORD size)
+{
+    HCERTSTORE certStore;
+    PCCERT_CONTEXT context;
+    
+    DWORD rv = ERROR_SUCCESS;
+    
+    certStore = CertOpenSystemStore(0, "Root");
+    
+    if(!certStore) {
+        rv = CSP_GetLastError();
+        goto exit;
+    }
+    
+    context = CertCreateCertificateContext(
+        X509_ASN_ENCODING | PKCS_7_ASN_ENCODING,
+        cert_body,
+        size);
+    
+    if (!context) {
+        rv = CSP_GetLastError();
+        goto close_store;
+    }
+    
+
+    if (!CertAddCertificateContextToStore(certStore, context, CERT_STORE_ADD_USE_EXISTING, NULL)) {
+        rv = CSP_GetLastError();
+        goto free_cert;
+    }
+
+free_cert:
+    CertFreeCertificateContext(context);
+close_store:
+    CertCloseStore(certStore, 0);
+exit:
+    return rv;
+}
