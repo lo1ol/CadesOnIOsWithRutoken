@@ -9,8 +9,6 @@
 #import "Certificate.h"
 #import "CadesImpl.h"
 
-#define MY_STRING_TYPE (CERT_OID_NAME_STR)
-
 @implementation Certificate
 @synthesize rawCert;
 
@@ -60,14 +58,14 @@ NSString* certNameToString(CERT_NAME_BLOB* certName, DWORD encodingType)
     DWORD cbSize;
     cbSize = CertNameToStr(encodingType,
                            certName,
-                      CERT_X500_NAME_STR,
+                      CERT_X500_NAME_STR | CERT_NAME_STR_NO_QUOTING_FLAG,
                       NULL,
                       0);
     
     LPTSTR pszString = (LPTSTR)malloc(cbSize * sizeof(TCHAR));
     cbSize = CertNameToStr(encodingType,
                            certName,
-                MY_STRING_TYPE,
+                CERT_X500_NAME_STR | CERT_NAME_STR_NO_QUOTING_FLAG,
                 pszString,
                 cbSize);
     
